@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeUnfold Intelligence OS</title>
+    <title>TradeUnfold | Intelligence Terminal</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0ab8b6; --bg: #030712; --card: #111827; --input: #1f2937; --text: #ffffff; --muted: #94a3b8; --danger: #ef4444; --success: #22c55e; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        :root { --primary: #0ab8b6; --bg: #030712; --sidebar: #000000; --card: #111827; --text: #ffffff; --muted: #94a3b8; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; overflow-x: hidden; }
         
-        .header { background: #000; padding: 20px 50px; border-bottom: 2px solid var(--primary); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo-img { height: 85px; cursor: pointer; transition: 0.3s; }
-        .logo-img:hover { filter: drop-shadow(0 0 10px var(--primary)); }
+        /* Header & Brand */
+        .header { background: #000; padding: 25px 60px; border-bottom: 2px solid var(--primary); display: flex; justify-content: center; position: sticky; top: 0; z-index: 1000; }
+        .logo-img { height: 95px; cursor: pointer; transition: 0.4s; }
+        .logo-img:hover { filter: brightness(1.2) drop-shadow(0 0 15px var(--primary)); }
 
-        .main-layout { display: flex; min-height: calc(100vh - 127px); }
-        .sidebar { width: 280px; background: #000; border-right: 1px solid #1f2937; padding: 20px; }
-        .nav-item { display: block; width: 100%; padding: 14px 20px; margin-bottom: 8px; background: transparent; border: 1px solid transparent; border-radius: 12px; color: var(--muted); text-align: left; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .main-layout { display: flex; min-height: calc(100vh - 147px); }
+        
+        /* Sidebar Navigation */
+        .sidebar { width: 300px; background: var(--sidebar); border-right: 1px solid #1f2937; padding: 30px 20px; }
+        .nav-item { display: block; width: 100%; padding: 16px 20px; margin-bottom: 10px; background: transparent; border: 1px solid transparent; border-radius: 12px; color: var(--muted); text-align: left; cursor: pointer; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-item:hover { color: var(--primary); background: #111827; }
         .nav-item.active { background: rgba(10, 184, 182, 0.1); border-color: var(--primary); color: var(--primary); }
 
-        .canvas { flex: 1; padding: 40px; max-width: 900px; margin: 0 auto; }
-        .tool-panel { display: none; animation: fadeIn 0.3s ease; }
+        /* Content Area */
+        .canvas { flex: 1; padding: 50px; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+        .tool-panel { display: none; width: 100%; animation: fadeIn 0.4s ease; }
         .tool-panel.active { display: block; }
         
-        .card { background: var(--card); border: 1px solid #1f2937; padding: 35px; border-radius: 24px; }
-        h1 { font-size: 28px; font-weight: 800; margin-bottom: 5px; }
-        .sub { color: var(--muted); margin-bottom: 25px; font-size: 14px; }
+        h1 { font-size: 34px; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; text-align: center; color: var(--primary); }
+        .sub { color: var(--muted); margin-bottom: 40px; font-size: 16px; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        label { display: block; font-size: 11px; font-weight: 800; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; }
-        input, select { width: 100%; padding: 14px; background: var(--input); border: 1px solid #374151; border-radius: 10px; color: #fff; }
-
-        .btn { width: 100%; padding: 16px; background: var(--primary); border: none; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 10px; }
-        .res-zone { margin-top: 25px; padding: 20px; background: #000; border-radius: 12px; border-left: 4px solid var(--primary); display: none; }
-        .res-val { color: var(--primary); font-weight: 800; float: right; }
+        /* Widget Sanitization */
+        .widget-wrapper { background: #ffffff; border-radius: 24px; padding: 10px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); overflow: hidden; width: 100%; display: flex; justify-content: center; }
         
-        /* Widget Styling Override */
-        #pip-value-calculator-928401 { background: white; border-radius: 20px; overflow: hidden; }
+        /* Force Hide Attributions */
+        .tradingview-widget-copyright { display: none !important; }
+        iframe { border-radius: 16px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -50,108 +50,76 @@
 
 <div class="main-layout">
     <div class="sidebar">
-        <button class="nav-item active" onclick="openTool(event, 'pip-engine')">Pip Value Engine</button>
-        <button class="nav-item" onclick="openTool(event, 'lot')">Position Architect</button>
-        <button class="nav-item" onclick="openTool(event, 'draw')">Equity Recovery</button>
-        <button class="nav-item" onclick="openTool(event, 'margin')">Capital Audit</button>
-        <button class="nav-item" onclick="openTool(event, 'prof')">ROI Forecast</button>
+        <button class="nav-item active" onclick="openTool(event, 'lot')">Position Architect</button>
+        <button class="nav-item" onclick="openTool(event, 'pip')">Pip Value Matrix</button>
+        <button class="nav-item" onclick="openTool(event, 'profit')">ROI Forecasting</button>
+        <button class="nav-item" onclick="openTool(event, 'margin')">Capital Utilization</button>
         <button class="nav-item" onclick="openTool(event, 'conv')">Exchange Pulse</button>
+        <button class="nav-item" onclick="openTool(event, 'cal')">Economic Impact</button>
     </div>
 
     <div class="canvas">
-        <div id="pip-engine" class="tool-panel active">
-            <h1>Pip Value Engine</h1>
-            <p class="sub">High-precision pip value calculations for all major and exotic pairs.</p>
-            <div id="pip-value-calculator-928401">
-                <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                <script type="text/javascript">
-                    RemoteCalc({
-                        "Url":"https://fxverify.com", 
-                        "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgYm9yZGVyOiBub25lOyBjb2xvcjogd2hpdGU7", // Custom Teal
-                        "BottomPaneStyle":"YmFja2dyb3VuZDogIzExMTgyNzsgYm9yZGVyOiBub25lOyBjb2xvcjogd2hpdGU7", // Dark Theme
-                        "ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IGJsYWNrOyBib3JkZXItcmFkaXVzOiAxMHB4Ow==",
-                        "TitleStyle":"ZGlzcGxheTogbm9uZTs=", // Hidden Title
-                        "TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogIzFmMjkzNzsgY29sb3I6IHdoaXRlOyBib3JkZXI6IDFweCBzb2xpZCAjMzc0MTUxOw==",
-                        "ContainerWidth":"100%",
-                        "HighlightColor":"#0ab8b6",
-                        "IsDisplayTitle":false,
-                        "IsShowChartLinks":false,
-                        "IsShowEmbedButton":false,
-                        "CompactType":"large",
-                        "Calculator":"pip-value-calculator",
-                        "ContainerId":"pip-value-calculator-928401"
-                    });
-                </script>
-            </div>
-        </div>
-
-        <div id="lot" class="tool-panel">
+        
+        <div id="lot" class="tool-panel active">
             <h1>Position Architect</h1>
-            <p class="sub">Calculate lot sizes based on capital risk.</p>
-            <div class="card">
-                <div class="grid">
-                    <div><label>Risk Amount ($)</label><input type="number" id="l-risk" value="100"></div>
-                    <div><label>Stop Loss (Pips)</label><input type="number" id="l-sl" value="20"></div>
-                </div>
-                <button class="btn" onclick="calcLot()">Calculate Size</button>
-                <div id="lot-res" class="res-zone"><p>Recommended Volume: <span id="lot-val" class="res-val">0.00 Lots</span></p></div>
+            <p class="sub">Calculate exact lot sizes to protect your equity from market volatility.</p>
+            <div class="widget-wrapper">
+                <div id="position-size-calculator-275013"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOyBib3JkZXI6IG5vbmU7","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjsgY29sb3I6ICMwMDAwMDA7IGJvcmRlcjogbm9uZTsg","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAxMnB4Ow==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","TextboxStyle":"YmFja2dyb3VuZDogI2Y5ZmFmYjsgYm9yZGVyOiAxcHggc29saWQgI2U1ZTdlODs=","ContainerWidth":"100%","HighlightColor":"#0ab8b6","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"position-size-calculator","ContainerId":"position-size-calculator-275013"});</script></div>
             </div>
         </div>
 
-        <div id="draw" class="tool-panel">
-            <h1>Equity Recovery</h1>
-            <p class="sub">Analyze drawdown impact and recovery required.</p>
-            <div class="card">
-                <div class="grid">
-                    <div><label>Initial Balance</label><input type="number" id="d-s" value="10000"></div>
-                    <div><label>Current Balance</label><input type="number" id="d-e" value="8000"></div>
-                </div>
-                <button class="btn" onclick="calcDraw()">Analyze Recovery</button>
-                <div id="draw-res" class="res-zone">
-                    <p>Drawdown: <span id="draw-p" class="res-val">20%</span></p>
-                    <p style="margin-top:10px">Recovery Needed: <span id="draw-r" class="res-val" style="color:var(--danger)">25%</span></p>
-                </div>
+        <div id="pip" class="tool-panel">
+            <h1>Pip Value Matrix</h1>
+            <p class="sub">Interbank pip value analysis for majors, minors, and crosses.</p>
+            <div class="widget-wrapper">
+                <div id="pip-value-calculator-928401"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAxMnB4Ow==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","HighlightColor":"#0ab8b6","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"pip-value-calculator","ContainerId":"pip-value-calculator-928401"});</script></div>
+            </div>
+        </div>
+
+        <div id="profit" class="tool-panel">
+            <h1>ROI Forecasting</h1>
+            <p class="sub">Project your target returns based on precise exit points.</p>
+            <div class="widget-wrapper">
+                <div id="profit-calculator-922304"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"profit-calculator-922304"});</script></div>
             </div>
         </div>
 
         <div id="margin" class="tool-panel">
-            <h1>Capital Audit</h1>
-            <p class="sub">Calculate required margin for your leverage.</p>
-            <div class="card">
-                <div class="grid">
-                    <div><label>Leverage (1:X)</label><input type="number" id="m-lev" value="100"></div>
-                    <div><label>Lots</label><input type="number" id="m-lot" value="1.0"></div>
-                </div>
-                <button class="btn" onclick="calcMargin()">Audit Margin</button>
-                <div id="margin-res" class="res-zone"><p>Required Margin: <span id="margin-val" class="res-val">$1000.00</span></p></div>
-            </div>
-        </div>
-
-        <div id="prof" class="tool-panel">
-            <h1>ROI Forecast</h1>
-            <p class="sub">Estimate potential trade profit.</p>
-            <div class="card">
-                <div class="grid">
-                    <div><label>Pips Target</label><input type="number" id="p-pips" value="50"></div>
-                    <div><label>Lots</label><input type="number" id="p-l" value="0.1"></div>
-                </div>
-                <button class="btn" onclick="calcProf()">Project ROI</button>
-                <div id="prof-res" class="res-zone"><p>Profit Estimate: <span id="prof-val" class="res-val">$50.00</span></p></div>
+            <h1>Capital Utilization</h1>
+            <p class="sub">Audit the required margin for your broker's leverage levels.</p>
+            <div class="widget-wrapper">
+                <div id="margin-calculator-66721"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"margin-calculator","ContainerId":"margin-calculator-66721"});</script></div>
             </div>
         </div>
 
         <div id="conv" class="tool-panel">
             <h1>Exchange Pulse</h1>
-            <p class="sub">Simple currency conversion.</p>
-            <div class="card">
-                <div class="grid">
-                    <div><label>Amount (USD)</label><input type="number" id="c-a" value="1000"></div>
-                    <div><label>To EUR Rate</label><input type="number" id="c-r" value="0.92"></div>
-                </div>
-                <button class="btn" onclick="calcConv()">Convert</button>
-                <div id="conv-res" class="res-zone"><p>Result: <span id="conv-val" class="res-val">920.00 EUR</span></p></div>
+            <p class="sub">Live interbank rates for worldwide currency conversion.</p>
+            <div class="widget-wrapper">
+                <div id="currency-converter-847847"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","IsDisplayTitle":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"currency-converter","ContainerId":"currency-converter-847847"});</script></div>
             </div>
         </div>
+
+        <div id="cal" class="tool-panel">
+            <h1>Economic Impact</h1>
+            <p class="sub">Global financial events that drive market volatility.</p>
+            <div class="widget-wrapper" style="background: none; box-shadow: none;">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                    {
+                    "colorTheme": "dark",
+                    "isTransparent": true,
+                    "locale": "en",
+                    "width": "100%",
+                    "height": "600",
+                    "importanceFilter": "-1,0,1"
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -161,45 +129,6 @@
         document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
         document.getElementById(name).classList.add('active');
         e.currentTarget.classList.add('active');
-    }
-
-    function calcLot() {
-        const r = document.getElementById('l-risk').value;
-        const sl = document.getElementById('l-sl').value;
-        // Basic calc for EURUSD as baseline
-        document.getElementById('lot-val').innerText = (r / (sl * 10)).toFixed(2) + " Lots";
-        document.getElementById('lot-res').style.display = 'block';
-    }
-
-    function calcDraw() {
-        const s = parseFloat(document.getElementById('d-s').value);
-        const e = parseFloat(document.getElementById('d-e').value);
-        const d = ((s-e)/s)*100;
-        const r = ((s-e)/e)*100;
-        document.getElementById('draw-p').innerText = d.toFixed(2) + "%";
-        document.getElementById('draw-r').innerText = r.toFixed(2) + "%";
-        document.getElementById('draw-res').style.display = 'block';
-    }
-
-    function calcMargin() {
-        const lev = document.getElementById('m-lev').value;
-        const lot = document.getElementById('m-lot').value;
-        document.getElementById('margin-val').innerText = "$" + ((lot * 100000) / lev).toFixed(2);
-        document.getElementById('margin-res').style.display = 'block';
-    }
-
-    function calcProf() {
-        const pips = document.getElementById('p-pips').value;
-        const l = document.getElementById('p-l').value;
-        document.getElementById('prof-val').innerText = "$" + (pips * l * 10).toFixed(2);
-        document.getElementById('prof-res').style.display = 'block';
-    }
-
-    function calcConv() {
-        const a = document.getElementById('c-a').value;
-        const r = document.getElementById('c-r').value;
-        document.getElementById('conv-val').innerText = (a * r).toFixed(2);
-        document.getElementById('conv-res').style.display = 'block';
     }
 </script>
 </body>
