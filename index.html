@@ -1,68 +1,169 @@
-<div id="tu-final-architect" style="max-width: 100%; margin: 20px auto; padding: 20px; border-radius: 15px; font-family: sans-serif; background: #0f172a; color: #f8fafc; border: 1px solid #1e293b; direction: ltr; box-sizing: border-box;">
-    
-    <h2 style="color: #38bdf8; text-align: center; font-size: 22px;">TradeUnfold Architect</h2>
-    
-    <div style="margin-bottom: 15px;">
-        <label style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Asset</label>
-        <select id="tu-symbol" style="width: 100%; padding: 10px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; color: white;">
-            <option value="EURUSD">EUR/USD</option>
-            <option value="GBPUSD">GBP/USD</option>
-            <option value="USDJPY">USD/JPY</option>
-            <option value="XAUUSD">GOLD</option>
-            <option value="BTCUSD">BITCOIN</option>
-        </select>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeUnfold Strategy Architect</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .back-link { display: inline-block; color: #38bdf8; text-decoration: none; margin-bottom: 25px; font-weight: 800; font-size: 14px; border: 1px solid #38bdf8; padding: 8px 15px; border-radius: 8px; transition: 0.3s; }
+        .back-link:hover { background: rgba(56, 189, 248, 0.1); }
+        #tu-architect { max-width: 500px; width: 100%; background: #1e293b; padding: 30px; border-radius: 20px; border: 1px solid #334155; box-shadow: 0 20px 50px rgba(0,0,0,0.5); direction: ltr; box-sizing: border-box; }
+        h2 { color: #38bdf8; text-align: center; margin-bottom: 25px; font-size: 24px; font-weight: 800; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        label { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 5px; }
+        select, input { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: white; font-size: 14px; box-sizing: border-box; }
+        button { width: 100%; padding: 18px; background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%); color: white; border: none; border-radius: 12px; font-size: 17px; font-weight: 800; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        #results { margin-top: 25px; display: none; background: #0f172a; padding: 20px; border-radius: 15px; border-left: 5px solid #38bdf8; animation: fadeIn 0.4s; }
+        .res-row { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
+        .val { font-weight: 800; font-size: 18px; color: #38bdf8; }
+        .sl { color: #f87171; }
+        .tp { color: #4ade80; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
 
-    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-        <div style="flex: 1;">
-            <label style="font-size: 11px; color: #f87171;">Risk Amount ($)</label>
-            <input type="number" id="tu-loss-money" value="100" style="width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: white;">
+    <a href="https://tradeunfold.co.il" class="back-link">&larr; BACK TO WEBSITE</a>
+
+    <div id="tu-architect">
+        <h2>Strategy Architect</h2>
+        
+        <div class="grid">
+            <div>
+                <label>Asset / Symbol</label>
+                <select id="symbol">
+                    <optgroup label="Majors">
+                        <option value="EURUSD">EUR/USD</option>
+                        <option value="GBPUSD">GBP/USD</option>
+                        <option value="USDJPY">USD/JPY</option>
+                        <option value="USDCHF">USD/CHF</option>
+                        <option value="USDCAD">USD/CAD</option>
+                        <option value="AUDUSD">AUD/USD</option>
+                    </optgroup>
+                    <optgroup label="Crosses">
+                        <option value="GBPJPY">GBP/JPY</option>
+                        <option value="EURGBP">EUR/GBP</option>
+                        <option value="EURAUD">EUR/AUD</option>
+                        <option value="EURJPY">EUR/JPY</option>
+                        <option value="GBPAUD">GBP/AUD</option>
+                    </optgroup>
+                    <optgroup label="Commodities & Crypto">
+                        <option value="XAUUSD">GOLD (XAU)</option>
+                        <option value="BTCUSD">BITCOIN (BTC)</option>
+                        <option value="ETHUSD">ETHEREUM (ETH)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div>
+                <label>Acc. Currency</label>
+                <select id="accCurr">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                </select>
+            </div>
         </div>
-        <div style="flex: 1;">
-            <label style="font-size: 11px; color: #38bdf8;">Trade Size (Lots)</label>
-            <input type="number" id="tu-lots" value="1.0" step="0.01" style="width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: white;">
+
+        <div class="grid">
+            <div>
+                <label>Risk Amount (Cash)</label>
+                <input type="number" id="riskCash" value="100">
+            </div>
+            <div>
+                <label>Trade Size (Lots)</label>
+                <input type="number" id="lots" value="0.10" step="0.01">
+            </div>
+        </div>
+
+        <div class="grid">
+            <div>
+                <label>Target Profit (Cash)</label>
+                <input type="number" id="profitCash" value="300">
+            </div>
+            <div>
+                <label>Entry Price (Opt.)</label>
+                <input type="number" id="entry" placeholder="Optional" step="0.00001">
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label>Trade Direction</label>
+            <select id="dir">
+                <option value="buy">BUY / LONG</option>
+                <option value="sell">SELL / SHORT</option>
+            </select>
+        </div>
+
+        <button id="calcBtn" onclick="calculate()">GENERATE TRADE SPECS</button>
+
+        <div id="results">
+            <div class="res-row"><span>Stop Loss Distance:</span> <span id="slPips" class="val sl">-</span></div>
+            <div class="res-row"><span>Take Profit Distance:</span> <span id="tpPips" class="val tp">-</span></div>
+            <div id="price-section" style="display:none; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #334155;">
+                <div class="res-row"><span>SL Price Level:</span> <span id="slPrice" class="val sl">-</span></div>
+                <div class="res-row"><span>TP Price Level:</span> <span id="tpPrice" class="val tp">-</span></div>
+            </div>
         </div>
     </div>
-
-    <button type="button" onclick="window.calculateTrade()" style="width: 100%; padding: 15px; background: #38bdf8; color: #0f172a; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">CALCULATE</button>
-
-    <div id="tu-final-results" style="margin-top: 20px; display: none; background: #1e293b; padding: 15px; border-radius: 10px; border: 1px solid #334155;">
-        <div style="text-align: center; margin-bottom: 10px;">
-            <span style="color: #94a3b8; font-size: 12px;">STOP LOSS DISTANCE</span>
-            <div id="res-sl-pips" style="font-size: 30px; font-weight: 800; color: #f87171;">-</div>
-            <span style="font-size: 12px; color: #94a3b8;">PIPS</span>
-        </div>
-    </div>
-</div>
 
 <script>
-window.calculateTrade = async function() {
-    const symbol = document.getElementById('tu-symbol').value;
-    const lossAmt = parseFloat(document.getElementById('tu-loss-money').value);
-    const lots = parseFloat(document.getElementById('tu-lots').value);
+async function calculate() {
+    const btn = document.getElementById('calcBtn');
+    const originalText = btn.innerText;
+    btn.innerText = "FETCHING MARKET DATA...";
+    btn.disabled = true;
+    
+    const symbol = document.getElementById('symbol').value;
+    const accCurr = document.getElementById('accCurr').value;
+    const riskCash = parseFloat(document.getElementById('riskCash').value);
+    const profitCash = parseFloat(document.getElementById('profitCash').value);
+    const lots = parseFloat(document.getElementById('lots').value);
+    const entry = parseFloat(document.getElementById('entry').value);
+    const dir = document.getElementById('dir').value;
 
     try {
-        const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-        const data = await response.json();
+        const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        const data = await res.json();
         const rates = data.rates;
 
-        let isJpy = symbol.includes("JPY") || symbol.includes("XAU");
-        let pipSize = isJpy ? 0.01 : 0.0001;
-        let contractSize = symbol.includes("XAU") ? 100 : 100000;
+        let isJpy = symbol.includes("JPY");
+        let isGold = symbol.includes("XAU");
+        let pipSize = (isJpy || isGold) ? 0.01 : 0.0001;
+        let contractSize = isGold ? 100 : 100000;
         
         let quoteCurrency = symbol.substring(3);
-        let pipValueInUSD = (pipSize * contractSize);
-        if (quoteCurrency !== "USD" && rates[quoteCurrency]) {
-            pipValueInUSD = pipValueInUSD / rates[quoteCurrency];
+        let pipValueUSD = (pipSize * contractSize);
+        if (quoteCurrency !== "USD") pipValueUSD = pipValueUSD / (rates[quoteCurrency] || 1);
+
+        let pipValueAcc = pipValueUSD * rates[accCurr];
+        
+        let slPips = riskCash / (lots * pipValueAcc);
+        let tpPips = profitCash / (lots * pipValueAcc);
+
+        document.getElementById('slPips').innerText = Math.round(slPips) + " Pips";
+        document.getElementById('tpPips').innerText = Math.round(tpPips) + " Pips";
+
+        if (!isNaN(entry) && entry > 0) {
+            let slLvl = dir === "buy" ? entry - (slPips * pipSize) : entry + (slPips * pipSize);
+            let tpLvl = dir === "buy" ? entry + (tpPips * pipSize) : entry - (tpPips * pipSize);
+            document.getElementById('slPrice').innerText = slLvl.toFixed(isJpy ? 3 : 5);
+            document.getElementById('tpPrice').innerText = tpLvl.toFixed(isJpy ? 3 : 5);
+            document.getElementById('price-section').style.display = 'block';
+        } else {
+            document.getElementById('price-section').style.display = 'none';
         }
 
-        let slPips = lossAmt / (lots * pipValueInUSD);
-
-        document.getElementById('res-sl-pips').innerText = Math.round(slPips);
-        document.getElementById('tu-final-results').style.display = 'block';
+        document.getElementById('results').style.display = 'block';
     } catch (e) { 
-        console.error(e);
-        alert("Live Data Error. Please check your connection."); 
+        alert("Market data sync failed. Check connection."); 
+    } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
     }
-};
+}
 </script>
+
+</body>
+</html>
