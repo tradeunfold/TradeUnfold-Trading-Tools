@@ -3,224 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeUnfold | Professional Trading Dashboard</title>
+    <title>TradeUnfold | Professional Dashboard</title>
     <style>
         :root {
             --bg-color: #0F0F0F;
-            --sidebar-color: #1A1A1A;
+            --sidebar-color: #161616;
             --text-color: #DBDBDB;
             --accent-color: #2962FF;
-            --border-color: #333;
+            --border-color: #2A2E39;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu, sans-serif;
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            margin: 0;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
 
-        /* Sidebar Navigation */
-        #main-container {
-            display: flex;
-            flex: 1;
-        }
+        /* Layout Structure */
+        #wrapper { display: flex; flex: 1; overflow: hidden; }
 
+        /* Sidebar Customization */
         nav {
-            width: 250px;
+            width: 260px;
             background-color: var(--sidebar-color);
             border-right: 1px solid var(--border-color);
-            padding: 20px;
             overflow-y: auto;
+            padding: 15px 0;
         }
 
-        nav h2 { font-size: 1.2rem; color: var(--accent-color); margin-bottom: 20px; }
-        
-        .nav-group { margin-bottom: 25px; }
-        .nav-group h3 { font-size: 0.8rem; text-transform: uppercase; color: #666; letter-spacing: 1px; }
+        .nav-header { padding: 0 20px 20px 20px; font-weight: bold; font-size: 1.2rem; color: var(--accent-color); border-bottom: 1px solid var(--border-color); margin-bottom: 15px; }
+
+        .nav-category { font-size: 0.75rem; color: #5d606b; text-transform: uppercase; padding: 15px 20px 5px; letter-spacing: 1px; }
 
         nav a {
             display: block;
+            padding: 12px 20px;
             color: var(--text-color);
             text-decoration: none;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 5px;
-            transition: 0.3s;
+            font-size: 0.9rem;
+            transition: all 0.2s;
         }
 
-        nav a:hover, nav a.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
+        nav a:hover { background: #1e222d; }
+        nav a.active { background: var(--accent-color); color: white; border-radius: 0 20px 20px 0; margin-right: 10px; }
 
         /* Content Area */
-        main {
-            flex: 1;
-            padding: 30px;
-            overflow-y: auto;
-        }
+        main { flex: 1; position: relative; background: var(--bg-color); display: flex; flex-direction: column; }
+        .tab-content { display: none; width: 100%; height: 100%; padding: 20px; box-sizing: border-box; }
+        .tab-content.active { display: block; }
 
-        .widget-section {
-            display: none; /* Hidden by default */
-        }
-
-        .widget-section.active {
-            display: block;
-        }
-
-        .widget-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-        }
-
-        /* Footer & Disclaimers */
+        /* Footer */
         footer {
-            background-color: var(--sidebar-color);
-            padding: 40px 20px;
+            background: var(--sidebar-color);
+            padding: 30px;
+            font-size: 0.8rem;
             border-top: 1px solid var(--border-color);
-            font-size: 0.85rem;
-            line-height: 1.6;
+            color: #868993;
         }
+        .disclaimer-section { margin-bottom: 15px; }
+        .disclaimer-section b { color: var(--text-color); display: block; margin-bottom: 5px; }
 
-        .disclaimer-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .disclaimer-title {
-            font-weight: bold;
-            color: var(--accent-color);
-            display: block;
-            margin-top: 15px;
-        }
-
-        @media (max-width: 768px) {
-            #main-container { flex-direction: column; }
-            nav { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
-        }
+        /* Full Height Fix for Widgets */
+        .tv-container { height: 90%; width: 100%; }
     </style>
 </head>
 <body>
 
-<div id="main-container">
+<div id="wrapper">
     <nav>
-        <h2>TradeUnfold</h2>
+        <div class="nav-header">TradeUnfold</div>
         
-        <div class="nav-group">
-            <h3>Markets</h3>
-            <a href="#" onclick="showSection('market-pulse')" class="active">Market Pulse</a>
-            <a href="#" onclick="showSection('heatmaps')">Heatmaps</a>
-        </div>
+        <div class="nav-category">Markets</div>
+        <a href="#" class="active" onclick="openTab(event, 'market_summary')">Summary</a>
+        <a href="#" onclick="openTab(event, 'market_overview')">Overview</a>
+        <a href="#" onclick="openTab(event, 'market_data')">Market Data</a>
+        <a href="#" onclick="openTab(event, 'tickers')">Single Ticker</a>
 
-        <div class="nav-group">
-            <h3>Analysis</h3>
-            <a href="#" onclick="showSection('charts')">Advanced Charts</a>
-            <a href="#" onclick="showSection('technical')">Technical Analysis</a>
-        </div>
+        <div class="nav-category">Charts & Analysis</div>
+        <a href="#" onclick="openTab(event, 'adv_chart')">Advanced Chart</a>
+        <a href="#" onclick="openTab(event, 'tech_analysis')">Technical Analysis</a>
+        <a href="#" onclick="openTab(event, 'symbol_info')">Symbol Info</a>
 
-        <div class="nav-group">
-            <h3>Assets</h3>
-            <a href="#" onclick="showSection('stocks')">Stocks</a>
-            <a href="#" onclick="showSection('forex-crypto')">Forex & Crypto</a>
-        </div>
+        <div class="nav-category">Heatmaps</div>
+        <a href="#" onclick="openTab(event, 'stock_heat')">Stock Heatmap</a>
+        <a href="#" onclick="openTab(event, 'crypto_heat')">Crypto Heatmap</a>
+        <a href="#" onclick="openTab(event, 'etf_heat')">ETF Heatmap</a>
+        <a href="#" onclick="openTab(event, 'fx_heat')">Forex Heatmap</a>
 
-        <div class="nav-group">
-            <h3>Tools</h3>
-            <a href="#" onclick="showSection('calculators')">Calculators</a>
-        </div>
+        <div class="nav-category">Screeners</div>
+        <a href="#" onclick="openTab(event, 'stock_mkt')">Stock Market</a>
+        <a href="#" onclick="openTab(event, 'fx_cross')">Forex Rates</a>
+        <a href="#" onclick="openTab(event, 'fx_screener')">Forex Screener</a>
+        <a href="#" onclick="openTab(event, 'crypto_mkt')">Crypto Market</a>
+
+        <div class="nav-category">Tools</div>
+        <a href="#" onclick="openTab(event, 'calculators')">Calculators</a>
     </nav>
 
-    <main id="content">
-        <section id="market-pulse" class="widget-section active">
-            <h1>Market Pulse</h1>
-            <div style="margin-bottom: 20px;">
-                <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
-                <tv-market-summary direction="horizontal" theme="dark"></tv-market-summary>
-            </div>
-            <div class="widget-grid">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                    { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "width": "100%", "height": "550", "tabs": [ { "title": "Indices", "symbols": [ { "s": "FOREXCOM:SPXUSD" }, { "s": "FOREXCOM:NSXUSD" } ] } ] }
-                    </script>
-                </div>
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                    { "symbol": "NASDAQ:AAPL", "colorTheme": "dark", "width": "100%" }
-                    </script>
-                </div>
-            </div>
-        </section>
+    <main>
+        <div id="market_summary" class="tab-content active">
+            <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
+            <tv-market-summary direction="horizontal" theme="dark"></tv-market-summary>
+        </div>
 
-        <section id="heatmaps" class="widget-section">
-            <h1>Market Heatmaps</h1>
-            <h3>Stock Heatmap (S&P 500)</h3>
-            <div class="tradingview-widget-container" style="height:500px;">
+        <div id="market_overview" class="tab-content">
+            <div class="tradingview-widget-container tv-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "locale": "en", "width": "100%", "height": "100%", "tabs": [{"title": "Indices", "symbols": [{"s": "FOREXCOM:SPXUSD"}]}] }
+                </script>
+            </div>
+        </div>
+
+        <div id="adv_chart" class="tab-content">
+            <div class="tradingview-widget-container tv-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                { "autosize": true, "symbol": "NASDAQ:AAPL", "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "1", "locale": "en" }
+                </script>
+            </div>
+        </div>
+
+        <div id="stock_heat" class="tab-content">
+            <div class="tradingview-widget-container tv-container">
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
                 { "dataSource": "SPX500", "blockSize": "market_cap_basic", "blockColor": "change", "colorTheme": "dark", "width": "100%", "height": "100%" }
                 </script>
             </div>
-            <h3 style="margin-top:40px;">Crypto Heatmap</h3>
-            <div class="tradingview-widget-container" style="height:500px;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-                { "dataSource": "Crypto", "blockSize": "market_cap_calc", "blockColor": "24h_close_change|5", "colorTheme": "dark", "width": "100%", "height": "100%" }
-                </script>
-            </div>
-        </section>
+        </div>
 
-        <section id="charts" class="widget-section">
-            <h1>Advanced Analysis</h1>
-            <div class="tradingview-widget-container" style="height:600px;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                { "symbol": "NASDAQ:AAPL", "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "1", "locale": "en", "enable_publishing": false, "allow_symbol_change": true, "container_id": "tradingview_chart" }
-                </script>
-            </div>
-        </section>
-
-        <section id="calculators" class="widget-section">
+        <div id="calculators" class="tab-content">
             <h1>Trading Calculators</h1>
-            <p>Calculator widgets (Position Sizing/Pip) typically require custom JS or 3rd party embeds. 
-               <br><br><em>Standard Work Placeholder: Custom logic for calculators to be injected here.</em></p>
-        </section>
+            <p>Select a tool below to calculate your risk:</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background:#1e222d; padding:20px; border-radius:8px;">
+                    <h3>Position Size Calculator</h3>
+                    <p>Standard Work Placeholder: [Custom JS Logic for Margin/Risk Calculation]</p>
+                </div>
+                <div style="background:#1e222d; padding:20px; border-radius:8px;">
+                    <h3>Pip Value Calculator</h3>
+                    <p>Standard Work Placeholder: [Custom JS Logic for Pip Value Calculation]</p>
+                </div>
+            </div>
+        </div>
 
-        </main>
+        <div id="market_data" class="tab-content">Market Data Widget Here</div>
+        <div id="tickers" class="tab-content">Ticker Widget Here</div>
+        <div id="tech_analysis" class="tab-content">Technical Analysis Widget Here</div>
+        <div id="symbol_info" class="tab-content">Symbol Info Widget Here</div>
+        <div id="crypto_heat" class="tab-content">Crypto Heatmap Widget Here</div>
+        <div id="etf_heat" class="tab-content">ETF Heatmap Widget Here</div>
+        <div id="fx_heat" class="tab-content">Forex Heatmap Widget Here</div>
+        <div id="stock_mkt" class="tab-content">Stock Market Widget Here</div>
+        <div id="fx_cross" class="tab-content">Forex Cross Rates Widget Here</div>
+        <div id="fx_screener" class="tab-content">Forex Screener Widget Here</div>
+        <div id="crypto_mkt" class="tab-content">Crypto Market Widget Here</div>
+    </main>
 </div>
 
 <footer>
-    <div class="disclaimer-container">
-        <span class="disclaimer-title">Affiliate Transparency:</span>
+    <div class="disclaimer-section">
+        <b>Affiliate Transparency:</b>
         Some links on this site are affiliate links. That means we may earn a small commission if you choose to buy through them- at no extra cost to you. But trust comes before profit: it’s always more important that you make your own decisions based on what’s best for your trading journey, while taking into account all the considerations and warnings we explain on our website. If you still decide to trade in online forex, CFDs, or with a prop firm, we want you to do so with a clear understanding of the risks and as a fully informed choice.
-
-        <span class="disclaimer-title">Risk Warning:</span>
-        Trading financial instruments such as forex, CFDs, and prop firm challenges involves a high level of risk. You should never trade with money you cannot afford to lose. The content on this website is strictly for educational purposes and should not be taken as financial advice. Always do your own research before making trading decisions.
-        
-        <p style="text-align:center; margin-top:30px; opacity:0.6;">
-            © 2025 TradeUnfold.com. All Rights Reserved.
-        </p>
     </div>
+    <div class="disclaimer-section">
+        <b>Risk Warning:</b>
+        Trading financial instruments such as forex, CFDs, and prop firm challenges involves a high level of risk. You should never trade with money you cannot afford to lose. The content on this website is strictly for educational purposes and should not be taken as financial advice. Always do your own research before making trading decisions.
+    </div>
+    <div style="text-align: center; margin-top: 20px;">© 2025 TradeUnfold.com. All Rights Reserved.</div>
 </footer>
 
 <script>
-    function showSection(sectionId) {
-        // Hide all sections
-        const sections = document.querySelectorAll('.widget-section');
-        sections.forEach(s => s.classList.remove('active'));
-        
-        // Remove active class from nav
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(l => l.classList.remove('active'));
-
-        // Show selected section
-        document.getElementById(sectionId).classList.add('active');
-        
-        // Add active class to clicked link
-        event.currentTarget.classList.add('active');
+    function openTab(evt, tabName) {
+        var i, tabcontent, navlinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        navlinks = document.getElementsByTagName("a");
+        for (i = 0; i < navlinks.length; i++) {
+            navlinks[i].className = navlinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
     }
 </script>
 
