@@ -3,124 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeUnfold | Intelligence Terminal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>TradeUnfold | Master Intelligence Terminal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0ab8b6; --bg: #030712; --sidebar: #000000; --card: #111827; --text: #ffffff; --muted: #94a3b8; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; overflow-x: hidden; }
+        :root { --primary: #0ab8b6; --bg: #030712; --card: #0f172a; --text: #f8fafc; --muted: #94a3b8; }
         
-        /* Header & Brand */
-        .header { background: #000; padding: 25px 60px; border-bottom: 2px solid var(--primary); display: flex; justify-content: center; position: sticky; top: 0; z-index: 1000; }
-        .logo-img { height: 95px; cursor: pointer; transition: 0.4s; }
-        .logo-img:hover { filter: brightness(1.2) drop-shadow(0 0 15px var(--primary)); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
 
-        .main-layout { display: flex; min-height: calc(100vh - 147px); }
-        
-        /* Sidebar Navigation */
-        .sidebar { width: 300px; background: var(--sidebar); border-right: 1px solid #1f2937; padding: 30px 20px; }
-        .nav-item { display: block; width: 100%; padding: 16px 20px; margin-bottom: 10px; background: transparent; border: 1px solid transparent; border-radius: 12px; color: var(--muted); text-align: left; cursor: pointer; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .nav-item:hover { color: var(--primary); background: #111827; }
-        .nav-item.active { background: rgba(10, 184, 182, 0.1); border-color: var(--primary); color: var(--primary); }
+        /* Header */
+        .header { background: #000; padding: 20px; border-bottom: 2px solid var(--primary); text-align: center; position: sticky; top: 0; z-index: 2000; }
+        .logo-img { height: 70px; transition: 0.3s; }
+        .logo-img:hover { filter: drop-shadow(0 0 10px var(--primary)); }
 
-        /* Content Area */
-        .canvas { flex: 1; padding: 50px; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-        .tool-panel { display: none; width: 100%; animation: fadeIn 0.4s ease; }
+        .main-layout { display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* Sidebar (Desktop) / Bottom Nav (Mobile) */
+        .sidebar { 
+            background: #000; 
+            border-right: 1px solid #1e293b; 
+            padding: 25px; 
+            width: 280px; 
+            position: fixed; 
+            height: 100vh; 
+            top: 112px;
+            z-index: 1000;
+        }
+
+        .nav-item { 
+            display: block; width: 100%; padding: 14px 20px; margin-bottom: 10px; 
+            background: transparent; border: 1px solid #1e293b; border-radius: 12px; 
+            color: var(--muted); text-align: left; cursor: pointer; font-weight: 700; 
+            font-size: 13px; text-transform: uppercase; transition: 0.3s; 
+        }
+
+        .nav-item.active { background: var(--primary); color: #000; border-color: var(--primary); box-shadow: 0 0 20px rgba(10, 184, 182, 0.3); }
+
+        /* Canvas / Content */
+        .canvas { 
+            flex: 1; 
+            margin-left: 280px; 
+            padding: 40px; 
+            width: calc(100% - 280px);
+            max-width: 1400px;
+        }
+
+        .tool-panel { display: none; animation: slideUp 0.4s ease-out; }
         .tool-panel.active { display: block; }
         
-        h1 { font-size: 34px; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; text-align: center; color: var(--primary); }
-        .sub { color: var(--muted); margin-bottom: 40px; font-size: 16px; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
+        h1 { font-size: clamp(24px, 5vw, 42px); font-weight: 900; margin-bottom: 8px; color: var(--primary); text-align: left; }
+        .sub { color: var(--muted); margin-bottom: 30px; font-size: 16px; }
 
-        /* Widget Sanitization */
-        .widget-wrapper { background: #ffffff; border-radius: 24px; padding: 10px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); overflow: hidden; width: 100%; display: flex; justify-content: center; }
-        
-        /* Force Hide Attributions */
+        /* The Widget Container - MASSIVE ON DESKTOP */
+        .widget-card { 
+            background: #ffffff; 
+            border-radius: 24px; 
+            padding: 15px; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            min-height: 600px;
+        }
+
+        /* Hide specific elements to clean the look */
         .tradingview-widget-copyright { display: none !important; }
-        iframe { border-radius: 16px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .sidebar { 
+                width: 100%; height: auto; position: fixed; bottom: 0; top: auto; 
+                display: flex; overflow-x: auto; padding: 10px; border-right: none; 
+                border-top: 1px solid #1e293b; gap: 10px;
+            }
+            .nav-item { min-width: 160px; margin-bottom: 0; white-space: nowrap; font-size: 11px; padding: 12px; }
+            .canvas { margin-left: 0; width: 100%; padding: 20px; padding-bottom: 100px; }
+            .header { padding: 15px; }
+            .logo-img { height: 50px; }
+            .widget-card { min-height: 500px; padding: 5px; }
+        }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-<div class="header">
+<header class="header">
     <a href="https://tradeunfold.com">
         <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold" class="logo-img">
     </a>
-</div>
+</header>
 
 <div class="main-layout">
-    <div class="sidebar">
-        <button class="nav-item active" onclick="openTool(event, 'lot')">Position Architect</button>
-        <button class="nav-item" onclick="openTool(event, 'pip')">Pip Value Matrix</button>
-        <button class="nav-item" onclick="openTool(event, 'profit')">ROI Forecasting</button>
-        <button class="nav-item" onclick="openTool(event, 'margin')">Capital Utilization</button>
-        <button class="nav-item" onclick="openTool(event, 'conv')">Exchange Pulse</button>
-        <button class="nav-item" onclick="openTool(event, 'cal')">Economic Impact</button>
-    </div>
+    <nav class="sidebar">
+        <button class="nav-item active" onclick="openTool(event, 'lot')">Position Builder</button>
+        <button class="nav-item" onclick="openTool(event, 'pip')">Pip Value</button>
+        <button class="nav-item" onclick="openTool(event, 'profit')">Profit Targets</button>
+        <button class="nav-item" onclick="openTool(event, 'margin')">Margin Audit</button>
+        <button class="nav-item" onclick="openTool(event, 'conv')">Currency Pulse</button>
+        <button class="nav-item" onclick="openTool(event, 'cal')">Market Events</button>
+    </nav>
 
-    <div class="canvas">
+    <main class="canvas">
         
-        <div id="lot" class="tool-panel active">
-            <h1>Position Architect</h1>
-            <p class="sub">Calculate exact lot sizes to protect your equity from market volatility.</p>
-            <div class="widget-wrapper">
-                <div id="position-size-calculator-275013"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOyBib3JkZXI6IG5vbmU7","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjsgY29sb3I6ICMwMDAwMDA7IGJvcmRlcjogbm9uZTsg","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAxMnB4Ow==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","TextboxStyle":"YmFja2dyb3VuZDogI2Y5ZmFmYjsgYm9yZGVyOiAxcHggc29saWQgI2U1ZTdlODs=","ContainerWidth":"100%","HighlightColor":"#0ab8b6","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"position-size-calculator","ContainerId":"position-size-calculator-275013"});</script></div>
+        <section id="lot" class="tool-panel active">
+            <h1>Position Builder</h1>
+            <p class="sub">Calculate precise lot sizes to control your risk exposure.</p>
+            <div class="widget-card">
+                <div id="ps-calc">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"position-size-calculator","ContainerId":"ps-calc"});
+                    </script>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="pip" class="tool-panel">
-            <h1>Pip Value Matrix</h1>
-            <p class="sub">Interbank pip value analysis for majors, minors, and crosses.</p>
-            <div class="widget-wrapper">
-                <div id="pip-value-calculator-928401"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAxMnB4Ow==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","HighlightColor":"#0ab8b6","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"pip-value-calculator","ContainerId":"pip-value-calculator-928401"});</script></div>
+        <section id="pip" class="tool-panel">
+            <h1>Pip Value</h1>
+            <p class="sub">Discover the exact dollar value of a single pip for any pair.</p>
+            <div class="widget-card">
+                <div id="pv-calc">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"pip-value-calculator","ContainerId":"pv-calc"});
+                    </script>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="profit" class="tool-panel">
-            <h1>ROI Forecasting</h1>
-            <p class="sub">Project your target returns based on precise exit points.</p>
-            <div class="widget-wrapper">
-                <div id="profit-calculator-922304"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"profit-calculator-922304"});</script></div>
+        <section id="profit" class="tool-panel">
+            <h1>Profit Targets</h1>
+            <p class="sub">Project your ROI before executing the trade.</p>
+            <div class="widget-card">
+                <div id="pr-calc">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"pr-calc"});
+                    </script>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="margin" class="tool-panel">
-            <h1>Capital Utilization</h1>
-            <p class="sub">Audit the required margin for your broker's leverage levels.</p>
-            <div class="widget-wrapper">
-                <div id="margin-calculator-66721"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"margin-calculator","ContainerId":"margin-calculator-66721"});</script></div>
+        <section id="margin" class="tool-panel">
+            <h1>Margin Audit</h1>
+            <p class="sub">Verify the required capital for your leveraged positions.</p>
+            <div class="widget-card">
+                <div id="m-calc">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"margin-calculator","ContainerId":"m-calc"});
+                    </script>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="conv" class="tool-panel">
-            <h1>Exchange Pulse</h1>
-            <p class="sub">Live interbank rates for worldwide currency conversion.</p>
-            <div class="widget-wrapper">
-                <div id="currency-converter-847847"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","BottomPaneStyle":"YmFja2dyb3VuZDogI2ZmZmZmZjs=","ButtonStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==","TitleStyle":"ZGlzcGxheTogbm9uZTs=","ContainerWidth":"100%","IsDisplayTitle":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"currency-converter","ContainerId":"currency-converter-847847"});</script></div>
+        <section id="conv" class="tool-panel">
+            <h1>Currency Pulse</h1>
+            <p class="sub">Real-time exchange rates for global currencies.</p>
+            <div class="widget-card">
+                <div id="cc-calc">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"currency-converter","ContainerId":"cc-calc"});
+                    </script>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="cal" class="tool-panel">
-            <h1>Economic Impact</h1>
-            <p class="sub">Global financial events that drive market volatility.</p>
-            <div class="widget-wrapper" style="background: none; box-shadow: none;">
+        <section id="cal" class="tool-panel">
+            <h1>Market Events</h1>
+            <p class="sub">Stay ahead of high-impact economic news.</p>
+            <div class="widget-card" style="background: transparent;">
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
                     {
                     "colorTheme": "dark",
                     "isTransparent": true,
-                    "locale": "en",
                     "width": "100%",
                     "height": "600",
+                    "locale": "en",
                     "importanceFilter": "-1,0,1"
                     }
                     </script>
                 </div>
             </div>
-        </div>
+        </section>
 
-    </div>
+    </main>
 </div>
 
 <script>
@@ -129,6 +198,7 @@
         document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
         document.getElementById(name).classList.add('active');
         e.currentTarget.classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 </script>
 </body>
