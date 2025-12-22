@@ -3,233 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeUnfold | Professional Trading Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>TradeUnfold | Intelligence Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0ab8b6; /* TradeUnfold Teal */
-            --bg-color: #030712;
-            --sidebar-color: #000000;
-            --text-color: #DBDBDB;
-            --accent-color: #0ab8b6;
-            --border-color: #1f2937;
+            --primary: #0ab8b6;
+            --primary-hover: #089d9b;
+            --bg: #f4f7f6;
+            --text-dark: #1a1a1a;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
         }
 
-        * { box-sizing: border-box; }
-        body, html { height: 100%; margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; overflow: hidden; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
 
-        /* Header Styling */
-        header {
-            height: 80px;
-            background-color: var(--sidebar-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px;
-            border-bottom: 2px solid var(--primary);
-            flex-shrink: 0;
+        /* --- Header Integration --- */
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px 10px;
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo-box img { max-height: 80px; width: auto; display: block; }
+        .top-nav { display: flex; flex-wrap: wrap; gap: 25px; }
+        .top-nav a { color: black; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: 0.3s; }
+        .top-nav a:hover { color: var(--primary); }
 
-        .header-title { font-size: 18px; font-weight: 800; letter-spacing: 1px; color: var(--primary); text-transform: uppercase; }
-        .logo-img { height: 60px; cursor: pointer; transition: 0.3s; }
-        .logo-img:hover { filter: drop-shadow(0 0 10px var(--primary)); }
+        .share-hub-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex; align-items: center; gap: 8px;
+            transition: 0.3s;
+        }
+        .share-hub-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
 
-        #wrapper { display: flex; flex: 1; overflow: hidden; }
+        /* --- Layout --- */
+        .wrapper { display: flex; min-height: 80vh; max-width: 1400px; margin: 0 auto; }
 
-        /* Sidebar Navigation */
-        nav { width: 280px; background-color: var(--sidebar-color); border-right: 1px solid var(--border-color); overflow-y: auto; padding-bottom: 40px; }
-        .nav-category { font-size: 0.7rem; color: #5d606b; text-transform: uppercase; padding: 25px 20px 10px; letter-spacing: 1.5px; font-weight: 900; }
-        nav a { display: block; padding: 12px 25px; color: #94a3b8; text-decoration: none; font-size: 0.85rem; transition: 0.2s; border-left: 3px solid transparent; font-weight: 600; }
-        nav a:hover { background: #111827; color: var(--primary); }
-        nav a.active { background: rgba(10, 184, 182, 0.1); border-left: 3px solid var(--primary); color: white; }
+        /* Sidebar */
+        aside { 
+            width: 280px; 
+            background: white; 
+            border-right: 1px solid var(--border);
+            padding: 30px 20px;
+        }
+        .aside-cat { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 800; letter-spacing: 1px; margin: 20px 0 10px 10px; }
+        .side-link { 
+            display: block; padding: 12px 15px; color: var(--text-dark); 
+            text-decoration: none; font-weight: 600; font-size: 14px;
+            border-radius: 8px; margin-bottom: 5px; transition: 0.2s;
+        }
+        .side-link:hover { background: #f0fdfa; color: var(--primary); }
+        .side-link.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(10, 184, 182, 0.2); }
 
-        /* Main Content Canvas */
-        main { flex: 1; overflow-y: auto; background: var(--bg-color); padding-bottom: 50px; scroll-behavior: smooth; }
-        .tab-content { display: none; padding: 40px; animation: fadeIn 0.4s ease; }
+        /* Main Area */
+        main { flex: 1; padding: 40px; background: var(--bg); }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
         .tab-content.active { display: block; }
-        .widget-title { margin-bottom: 10px; font-size: 2rem; font-weight: 900; color: white; }
-        .widget-sub { color: #94a3b8; margin-bottom: 30px; font-size: 14px; }
+        
+        h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: var(--text-dark); }
+        .sub-desc { color: var(--text-muted); margin-bottom: 30px; font-size: 16px; }
 
-        .widget-card { background: #ffffff; border-radius: 20px; padding: 15px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 30px; }
+        .widget-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            min-height: 600px;
+        }
 
-        /* Footer / Disclaimer */
-        footer { background: #000; padding: 40px; font-size: 0.8rem; border-top: 1px solid var(--border-color); color: #868993; line-height: 1.6; }
-        .disclaimer-section { margin-bottom: 20px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .disclaimer-section b { color: var(--primary); display: block; margin-bottom: 5px; font-size: 14px; }
+        /* --- Footer Integration --- */
+        .main-footer { background-color: #000; color: white; padding: 60px 20px; margin-top: 50px; }
+        .footer-grid { max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+        .footer-logo-box { display: inline-block; background: white; padding: 15px; border-radius: 12px; }
+        .footer-links { list-style: none; }
+        .footer-links a { color: #55c9c8; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { text-decoration: underline; }
 
-        /* Animation */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Responsive Mobile Layout */
+        /* Mobile */
         @media (max-width: 1024px) {
-            #wrapper { flex-direction: column; }
-            nav { width: 100%; height: auto; display: flex; overflow-x: auto; position: fixed; bottom: 0; border-right: none; border-top: 1px solid var(--border-color); z-index: 1000; padding-bottom: 0; }
-            nav a { white-space: nowrap; padding: 15px 20px; border-left: none; border-bottom: 3px solid transparent; }
-            nav a.active { border-left: none; border-bottom: 3px solid var(--primary); }
-            .nav-category { display: none; }
-            main { margin-bottom: 60px; }
-            header { padding: 0 20px; height: 70px; }
-            .logo-img { height: 45px; }
-            .tab-content { padding: 20px; }
+            .wrapper { flex-direction: column; }
+            aside { width: 100%; display: flex; overflow-x: auto; padding: 10px; position: sticky; top: 110px; z-index: 900; background: white; border-bottom: 1px solid var(--border); }
+            .side-link { white-space: nowrap; margin-bottom: 0; margin-right: 10px; }
+            .aside-cat { display: none; }
+            main { padding: 20px; }
+            .header-container { justify-content: center; gap: 15px; }
+            .top-nav { display: none; } /* Simplified for mobile */
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="header-title">Intelligence Terminal</div>
-    <a href="https://tradeunfold.com">
-        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold" class="logo-img">
-    </a>
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo-box">
+      <a href="https://tradeunfold.com">
+        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/08/logo.png" alt="TradeUnfold Logo">
+      </a>
+    </div>
+
+    <div class="top-nav">
+      <a href="https://tradeunfold.com">Home</a>
+      <a href="https://tradeunfold.com/blog">Blog</a>
+      <a href="https://tradeunfold.com/about">About</a>
+      <a href="https://tradeunfold.com/contact">Contact</a>
+    </div>
+
+    <button class="share-hub-btn" onclick="sharePage()">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+        Share Hub
+    </button>
+  </div>
 </header>
 
-<div id="wrapper">
-    <nav id="sidebar">
-        <div class="nav-category">Main Dashboard</div>
-        <a href="#" class="active" onclick="openTab(event, 'summary')">Market Summary</a>
-        <a href="#" onclick="openTab(event, 'overview')">World Overview</a>
+<div class="wrapper">
+    <aside>
+        <div class="aside-cat">Market Intelligence</div>
+        <a href="#" class="side-link active" onclick="openTool(event, 'summary')">Market Summary</a>
+        <a href="#" class="side-link" onclick="openTool(event, 'chart')">Advanced Charts</a>
         
-        <div class="nav-category">Analysis</div>
-        <a href="#" onclick="openTab(event, 'adv_chart')">Advanced Chart</a>
-        <a href="#" onclick="openTab(event, 'tech_analysis')">Technical Signals</a>
-        
-        <div class="nav-category">Heatmaps</div>
-        <a href="#" onclick="openTab(event, 'fx_heat')">Forex Heatmap</a>
-        <a href="#" onclick="openTab(event, 'crypto_heat')">Crypto Heatmap</a>
+        <div class="aside-cat">Calculation Tools</div>
+        <a href="#" class="side-link" onclick="openTool(event, 'pos')">Position Architect</a>
+        <a href="#" class="side-link" onclick="openTool(event, 'pip')">Pip Value Engine</a>
+        <a href="#" class="side-link" onclick="openTool(event, 'roi')">ROI Forecasting</a>
 
-        <div class="nav-category">Professional Tools</div>
-        <a href="#" onclick="openTab(event, 'calc_pos')">Position Architect</a>
-        <a href="#" onclick="openTab(event, 'calc_pip')">Pip Value Engine</a>
-        <a href="#" onclick="openTab(event, 'calc_profit')">ROI Forecast</a>
-        <a href="#" onclick="openTab(event, 'fx_screener')">Market Screener</a>
-    </nav>
+        <div class="aside-cat">Data Screener</div>
+        <a href="#" class="side-link" onclick="openTool(event, 'heat')">Forex Heatmap</a>
+        <a href="#" class="side-link" onclick="openTool(event, 'tech')">Technical Analysis</a>
+    </aside>
 
-    <main id="content-area">
-        <div id="summary" class="tab-content active">
-            <h2 class="widget-title">Market Pulse</h2>
-            <p class="widget-sub">Real-time snapshots of global asset performance.</p>
-            <div style="height: 600px; background: #131722; border-radius: 20px; overflow: hidden;">
+    <main id="main-scroll">
+        <section id="summary" class="tab-content active">
+            <h1>Market Summary</h1>
+            <p class="sub-desc">Live performance overview of global indices and pairs.</p>
+            <div class="widget-card">
                 <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
-                <tv-market-summary direction="horizontal" theme="dark"></tv-market-summary>
+                <tv-market-summary direction="horizontal" theme="light"></tv-market-summary>
             </div>
-        </div>
+        </section>
 
-        <div id="overview" class="tab-content">
-            <h2 class="widget-title">Global Overview</h2>
-            <div class="widget-card" style="height:650px; background: #131722;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "width": "100%", "height": "100%", "tabs": [{"title": "Indices", "symbols": [{"s": "FOREXCOM:SPXUSD"},{"s": "FOREXCOM:NSXUSD"}]}] }
-                </script>
+        <section id="chart" class="tab-content">
+            <h1>Precision Charting</h1>
+            <p class="sub-desc">Deep technical analysis with real-time exchange feeds.</p>
+            <div class="widget-card">
+                <div class="tradingview-widget-container" style="height:650px;">
+                    <div id="tv-adv-chart" style="height:100%;"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                        new TradingView.widget({ "autosize": true, "symbol": "FX:EURUSD", "interval": "D", "timezone": "Etc/UTC", "theme": "light", "style": "1", "locale": "en", "toolbar_bg": "#f1f3f6", "enable_publishing": false, "hide_side_toolbar": false, "allow_symbol_change": true, "container_id": "tv-adv-chart" });
+                    </script>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="adv_chart" class="tab-content">
-            <h2 class="widget-title">Precision Charting</h2>
-            <div class="widget-card" style="height:750px; background: #131722;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                { "autosize": true, "symbol": "FX:EURUSD", "interval": "D", "theme": "dark", "style": "1" }
-                </script>
+        <section id="pos" class="tab-content">
+            <h1>Position Architect</h1>
+            <p class="sub-desc">Calculate exact lot sizes based on your risk tolerance.</p>
+            <div class="widget-card">
+                <div id="ps-calc">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"Calculator":"position-size-calculator","ContainerId":"ps-calc"});
+                    </script>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="tech_analysis" class="tab-content">
-            <h2 class="widget-title">Technical Signals</h2>
-            <div class="widget-card" style="background: #131722;">
+        <section id="pip" class="tab-content">
+            <h1>Pip Value Engine</h1>
+            <p class="sub-desc">Live pip valuation for precise profit/loss accounting.</p>
+            <div class="widget-card">
+                <div id="pip-calc">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"Calculator":"pip-value-calculator","ContainerId":"pip-calc"});
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech" class="tab-content">
+            <h1>Technical Gauge</h1>
+            <p class="sub-desc">Aggregated indicator sentiment for chosen assets.</p>
+            <div class="widget-card">
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                { "interval": "1h", "width": "100%", "height": 450, "symbol": "FX:EURUSD", "showIntervalTabs": true, "colorTheme": "dark" }
+                { "interval": "1h", "width": "100%", "isTransparent": false, "height": 450, "symbol": "FX:EURUSD", "showIntervalTabs": true, "displayMode": "single", "locale": "en", "colorTheme": "light" }
                 </script>
             </div>
-        </div>
-
-        <div id="fx_heat" class="tab-content">
-            <h2 class="widget-title">Currency Strength</h2>
-            <div class="widget-card" style="background: #131722;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
-                { "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD"], "colorTheme": "dark", "width": "100%", "height": "600" }
-                </script>
-            </div>
-        </div>
-
-        <div id="calc_pos" class="tab-content">
-            <h2 class="widget-title">Position Architect</h2>
-            <div class="widget-card">
-                <div id="ps-container">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"Calculator":"position-size-calculator","ContainerId":"ps-container"});
-                    </script>
-                </div>
-            </div>
-        </div>
-
-        <div id="calc_pip" class="tab-content">
-            <h2 class="widget-title">Pip Value Engine</h2>
-            <div class="widget-card">
-                <div id="pip-container">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"Calculator":"pip-value-calculator","ContainerId":"pip-container"});
-                    </script>
-                </div>
-            </div>
-        </div>
-
-        <div id="calc_profit" class="tab-content">
-            <h2 class="widget-title">ROI Forecast</h2>
-            <div class="widget-card">
-                <div id="prof-container">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"Calculator":"profit-calculator","ContainerId":"prof-container"});
-                    </script>
-                </div>
-            </div>
-        </div>
-
-        <div id="fx_screener" class="tab-content">
-            <h2 class="widget-title">Market Screener</h2>
-            <div class="widget-card" style="background: #131722;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                { "width": "100%", "height": "600", "defaultColumn": "overview", "market": "forex", "colorTheme": "dark" }
-                </script>
-            </div>
-        </div>
-
-        <footer>
-            <div class="disclaimer-section">
-                <b>Affiliate Transparency:</b>
-                Some links on this site are affiliate links. This means we may earn a small commission at no extra cost to you. Trust comes before profit: always make decisions based on what’s best for your journey.
-            </div>
-            <div class="disclaimer-section">
-                <b>Risk Warning:</b>
-                Forex and CFD trading involves high risk. Never trade with money you cannot afford to lose. Content is for educational purposes only.
-            </div>
-            <div style="text-align: center; margin-top: 30px; opacity: 0.5;">© 2025 TradeUnfold.com | Professional Intelligence Suite</div>
-        </footer>
+        </section>
     </main>
 </div>
 
+<footer class="main-footer">
+  <div class="footer-grid">
+    <div style="flex: 1 1 250px">
+      <div class="footer-logo-box">
+        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/08/logo.png" alt="TradeUnfold Logo" style="height: 100px;">
+      </div>
+      <p style="font-size: 18px;font-weight: 700;color: #aaa;margin-top: 12px">Unfolding The World Of Trading</p>
+    </div>
+
+    <div style="flex: 1 1 200px">
+      <h4 style="font-size: 18px;margin-bottom: 15px">Pages</h4>
+      <ul class="footer-links">
+        <li><a href="https://tradeunfold.com/">Home</a></li>
+        <li><a href="https://tradeunfold.com/blog">Blog</a></li>
+        <li><a href="https://tradeunfold.com/about">About</a></li>
+        <li><a href="https://tradeunfold.com/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div style="flex: 1 1 200px">
+      <h4 style="font-size: 18px;margin-bottom: 15px">Legal</h4>
+      <ul class="footer-links">
+        <li><a href="https://tradeunfold.com/privacy-policy">Privacy Policy</a></li>
+        <li><a href="https://tradeunfold.com/disclaimer">Disclaimer</a></li>
+        <li><a href="https://tradeunfold.com/terms-of-use">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="max-width: 900px;margin:30px auto 0;text-align:center">
+    <p style="font-size: 13px;color: #888;margin-bottom:15px">
+      <strong>Affiliate Transparency:</strong> Some links on this site are affiliate links. That means we may earn a small commission at no extra cost to you. Trust comes before profit: always make decisions based on what’s best for your trading journey.
+    </p>
+    <p style="font-size: 12px;color: #777">
+      <strong>Risk Warning:</strong> Trading involves a high level of risk. Never trade with money you cannot afford to lose. Content is for educational purposes only.
+    </p>
+  </div>
+
+  <div style="text-align: center;border-top: 1px solid #222;margin-top: 40px;padding-top: 20px;font-size: 14px;color: #666">
+    © 2025 <strong>TradeUnfold.com</strong>. All Rights Reserved.
+  </div>
+</footer>
+
 <script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, navlinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
+    function openTool(evt, name) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
+        document.getElementById(name).classList.add('active');
+        evt.currentTarget.classList.add('active');
+        window.scrollTo({top: 100, behavior: 'smooth'});
+    }
+
+    function sharePage() {
+        if (navigator.share) {
+            navigator.share({ title: 'TradeUnfold Terminal', url: window.location.href });
+        } else {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Terminal link copied to clipboard!");
         }
-        navlinks = document.querySelectorAll("nav a");
-        for (i = 0; i < navlinks.length; i++) {
-            navlinks[i].classList.remove("active");
-        }
-        document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-        
-        // Scroll main content area to top
-        document.getElementById('content-area').scrollTop = 0;
     }
 </script>
-
 </body>
 </html>
