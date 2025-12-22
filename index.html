@@ -4,58 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TradeUnfold | Professional Trading Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0F0F0F;
-            --sidebar-color: #161616;
+            --primary: #0ab8b6; /* TradeUnfold Teal */
+            --bg-color: #030712;
+            --sidebar-color: #000000;
             --text-color: #DBDBDB;
-            --accent-color: #2962FF;
-            --border-color: #2A2E39;
+            --accent-color: #0ab8b6;
+            --border-color: #1f2937;
         }
 
-        body, html { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, sans-serif; background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; overflow: hidden; }
+        * { box-sizing: border-box; }
+        body, html { height: 100%; margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); display: flex; flex-direction: column; overflow: hidden; }
 
-        /* Top Header for Logo */
+        /* Header Styling */
         header {
-            height: 60px;
+            height: 80px;
             background-color: var(--sidebar-color);
             display: flex;
             align-items: center;
-            padding: 0 25px;
-            border-bottom: 1px solid var(--border-color);
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 2px solid var(--primary);
+            flex-shrink: 0;
+            z-index: 1000;
         }
 
-        .logo-text { font-size: 24px; font-weight: 800; color: white; letter-spacing: -1px; }
-        .logo-text span { color: var(--accent-color); }
+        .header-title { font-size: 18px; font-weight: 800; letter-spacing: 1px; color: var(--primary); text-transform: uppercase; }
+        .logo-img { height: 60px; cursor: pointer; transition: 0.3s; }
+        .logo-img:hover { filter: drop-shadow(0 0 10px var(--primary)); }
 
         #wrapper { display: flex; flex: 1; overflow: hidden; }
 
-        /* Sidebar */
-        nav { width: 260px; background-color: var(--sidebar-color); border-right: 1px solid var(--border-color); overflow-y: auto; padding-bottom: 100px; }
-        .nav-category { font-size: 0.7rem; color: #5d606b; text-transform: uppercase; padding: 20px 20px 5px; letter-spacing: 1.5px; }
-        nav a { display: block; padding: 10px 20px; color: var(--text-color); text-decoration: none; font-size: 0.85rem; transition: 0.2s; border-left: 3px solid transparent; }
-        nav a:hover { background: #1e222d; }
-        nav a.active { background: #1e222d; border-left: 3px solid var(--accent-color); color: white; }
+        /* Sidebar Navigation */
+        nav { width: 280px; background-color: var(--sidebar-color); border-right: 1px solid var(--border-color); overflow-y: auto; padding-bottom: 40px; }
+        .nav-category { font-size: 0.7rem; color: #5d606b; text-transform: uppercase; padding: 25px 20px 10px; letter-spacing: 1.5px; font-weight: 900; }
+        nav a { display: block; padding: 12px 25px; color: #94a3b8; text-decoration: none; font-size: 0.85rem; transition: 0.2s; border-left: 3px solid transparent; font-weight: 600; }
+        nav a:hover { background: #111827; color: var(--primary); }
+        nav a.active { background: rgba(10, 184, 182, 0.1); border-left: 3px solid var(--primary); color: white; }
 
-        /* Main Content */
-        main { flex: 1; overflow-y: auto; background: var(--bg-color); }
-        .tab-content { display: none; padding: 25px; min-height: 800px; }
+        /* Main Content Canvas */
+        main { flex: 1; overflow-y: auto; background: var(--bg-color); padding-bottom: 50px; scroll-behavior: smooth; }
+        .tab-content { display: none; padding: 40px; animation: fadeIn 0.4s ease; }
         .tab-content.active { display: block; }
-        .widget-title { margin-bottom: 20px; font-size: 1.5rem; }
+        .widget-title { margin-bottom: 10px; font-size: 2rem; font-weight: 900; color: white; }
+        .widget-sub { color: #94a3b8; margin-bottom: 30px; font-size: 14px; }
 
-        /* Footer */
-        footer { background: var(--sidebar-color); padding: 30px; font-size: 0.8rem; border-top: 1px solid var(--border-color); color: #868993; flex-shrink: 0; }
-        .disclaimer-section { margin-bottom: 15px; }
-        .disclaimer-section b { color: var(--text-color); display: block; margin-bottom: 5px; }
+        .widget-card { background: #ffffff; border-radius: 20px; padding: 15px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 30px; }
 
-        /* Calculator Grid */
-        .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        /* Footer / Disclaimer */
+        footer { background: #000; padding: 40px; font-size: 0.8rem; border-top: 1px solid var(--border-color); color: #868993; line-height: 1.6; }
+        .disclaimer-section { margin-bottom: 20px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .disclaimer-section b { color: var(--primary); display: block; margin-bottom: 5px; font-size: 14px; }
+
+        /* Animation */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 1024px) {
+            #wrapper { flex-direction: column; }
+            nav { width: 100%; height: auto; display: flex; overflow-x: auto; position: fixed; bottom: 0; border-right: none; border-top: 1px solid var(--border-color); z-index: 1000; padding-bottom: 0; }
+            nav a { white-space: nowrap; padding: 15px 20px; border-left: none; border-bottom: 3px solid transparent; }
+            nav a.active { border-left: none; border-bottom: 3px solid var(--primary); }
+            .nav-category { display: none; }
+            main { margin-bottom: 60px; }
+            header { padding: 0 20px; height: 70px; }
+            .logo-img { height: 45px; }
+            .tab-content { padding: 20px; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-text">TRADE<span>UNFOLD</span></div>
+    <div class="header-title">Intelligence Terminal</div>
+    <a href="https://tradeunfold.com">
+        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold" class="logo-img">
+    </a>
 </header>
 
 <div id="wrapper">
@@ -63,159 +89,145 @@
         <div class="nav-category">Main Dashboard</div>
         <a href="#" class="active" onclick="openTab(event, 'summary')">Market Summary</a>
         <a href="#" onclick="openTab(event, 'overview')">World Overview</a>
-        <a href="#" onclick="openTab(event, 'mkt_data')">Market Data Quotes</a>
         
         <div class="nav-category">Analysis</div>
         <a href="#" onclick="openTab(event, 'adv_chart')">Advanced Chart</a>
-        <a href="#" onclick="openTab(event, 'tech_analysis')">Technical Analysis</a>
-        <a href="#" onclick="openTab(event, 'symbol_info')">Symbol Info</a>
-        <a href="#" onclick="openTab(event, 'company_profile')">Company Profile</a>
-
+        <a href="#" onclick="openTab(event, 'tech_analysis')">Technical Signals</a>
+        
         <div class="nav-category">Heatmaps</div>
-        <a href="#" onclick="openTab(event, 'stock_heat')">Stock Heatmap</a>
-        <a href="#" onclick="openTab(event, 'crypto_heat')">Crypto Heatmap</a>
-        <a href="#" onclick="openTab(event, 'etf_heat')">ETF Heatmap</a>
         <a href="#" onclick="openTab(event, 'fx_heat')">Forex Heatmap</a>
+        <a href="#" onclick="openTab(event, 'crypto_heat')">Crypto Heatmap</a>
 
-        <div class="nav-category">Screeners</div>
-        <a href="#" onclick="openTab(event, 'stock_mkt')">Stock Hotlists</a>
-        <a href="#" onclick="openTab(event, 'fx_cross')">Forex Cross Rates</a>
-        <a href="#" onclick="openTab(event, 'fx_screener')">Forex Screener</a>
-        <a href="#" onclick="openTab(event, 'crypto_screener')">Crypto Screener</a>
-
-        <div class="nav-category">Tools</div>
-        <a href="#" onclick="openTab(event, 'calculators')">Forex Verify Calculators</a>
+        <div class="nav-category">Professional Tools</div>
+        <a href="#" onclick="openTab(event, 'calc_pos')">Position Architect</a>
+        <a href="#" onclick="openTab(event, 'calc_pip')">Pip Value Engine</a>
+        <a href="#" onclick="openTab(event, 'calc_profit')">ROI Forecast</a>
+        <a href="#" onclick="openTab(event, 'fx_screener')">Market Screener</a>
     </nav>
 
-    <main>
+    <main id="content-area">
         <div id="summary" class="tab-content active">
-            <h2 class="widget-title">Market Summary</h2>
-            <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
-            <tv-market-summary direction="horizontal" theme="dark"></tv-market-summary>
-        </div>
-
-        <div id="overview" class="tab-content">
-            <div class="tradingview-widget-container" style="height:600px;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "width": "100%", "height": "100%", "tabs": [{"title": "Indices", "symbols": [{"s": "FOREXCOM:SPXUSD"},{"s": "FOREXCOM:NSXUSD"},{"s": "FOREXCOM:DJI"}]}] }
-                </script>
+            <h2 class="widget-title">Market Pulse</h2>
+            <p class="widget-sub">Real-time snapshots of global asset performance.</p>
+            <div style="height: 600px; background: #131722; border-radius: 20px; overflow: hidden;">
+                <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
+                <tv-market-summary direction="horizontal" theme="dark"></tv-market-summary>
             </div>
         </div>
 
-        <div id="mkt_data" class="tab-content">
-            <div class="tradingview-widget-container" style="height:600px;">
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-                { "width": "100%", "height": "100%", "symbolsGroups": [{"name": "Indices", "symbols": [{"name": "FOREXCOM:SPXUSD"}]}], "colorTheme": "dark" }
+        <div id="overview" class="tab-content">
+            <h2 class="widget-title">Global Overview</h2>
+            <div class="widget-card" style="height:650px; background: #131722;">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "width": "100%", "height": "100%", "tabs": [{"title": "Indices", "symbols": [{"s": "FOREXCOM:SPXUSD"},{"s": "FOREXCOM:NSXUSD"}]}] }
                 </script>
             </div>
         </div>
 
         <div id="adv_chart" class="tab-content">
-            <div class="tradingview-widget-container" style="height:700px;">
+            <h2 class="widget-title">Precision Charting</h2>
+            <div class="widget-card" style="height:750px; background: #131722;">
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                { "autosize": true, "symbol": "NASDAQ:AAPL", "interval": "D", "theme": "dark", "style": "1" }
+                { "autosize": true, "symbol": "FX:EURUSD", "interval": "D", "theme": "dark", "style": "1" }
                 </script>
             </div>
         </div>
 
         <div id="tech_analysis" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-            { "interval": "1m", "width": "100%", "isTransparent": false, "height": 450, "symbol": "NASDAQ:AAPL", "showIntervalTabs": true, "colorTheme": "dark" }
-            </script>
-        </div>
-
-        <div id="stock_heat" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-            { "dataSource": "SPX500", "blockSize": "market_cap_basic", "blockColor": "change", "colorTheme": "dark", "width": "100%", "height": "600" }
-            </script>
-        </div>
-
-        <div id="crypto_heat" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-            { "dataSource": "Crypto", "blockSize": "market_cap_calc", "blockColor": "24h_close_change|5", "colorTheme": "dark", "width": "100%", "height": "600" }
-            </script>
-        </div>
-
-        <div id="etf_heat" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-etf-heatmap.js" async>
-            { "dataSource": "AllUSEtf", "blockSize": "volume", "blockColor": "change", "colorTheme": "dark", "width": "100%", "height": "600" }
-            </script>
-        </div>
-
-        <div id="fx_heat" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
-            { "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY"], "colorTheme": "dark", "width": "100%", "height": "600" }
-            </script>
-        </div>
-
-        <div id="calculators" class="tab-content">
-            <h2 class="widget-title">Forex Verify Calculators</h2>
-            <div class="calc-grid">
-                <iframe src="https://www.forexverify.com/calculators/positionsize" width="100%" height="600" frameborder="0"></iframe>
-                <iframe src="https://www.forexverify.com/calculators/pipvalue" width="100%" height="600" frameborder="0"></iframe>
+            <h2 class="widget-title">Technical Signals</h2>
+            <div class="widget-card" style="background: #131722;">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                { "interval": "1h", "width": "100%", "height": 450, "symbol": "FX:EURUSD", "showIntervalTabs": true, "colorTheme": "dark" }
+                </script>
             </div>
         </div>
 
-        <div id="symbol_info" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
-            { "symbol": "NASDAQ:AAPL", "width": "100%", "colorTheme": "dark" }
-            </script>
+        <div id="fx_heat" class="tab-content">
+            <h2 class="widget-title">Currency Strength</h2>
+            <div class="widget-card" style="background: #131722;">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
+                { "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD"], "colorTheme": "dark", "width": "100%", "height": "600" }
+                </script>
+            </div>
         </div>
 
-        <div id="company_profile" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js" async>
-            { "symbol": "NASDAQ:AAPL", "width": "100%", "height": "600", "colorTheme": "dark" }
-            </script>
+        <div id="calc_pos" class="tab-content">
+            <h2 class="widget-title">Position Architect</h2>
+            <div class="widget-card">
+                <div id="ps-container">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"Calculator":"position-size-calculator","ContainerId":"ps-container"});
+                    </script>
+                </div>
+            </div>
         </div>
 
-        <div id="stock_mkt" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js" async>
-            { "exchange": "US", "showChart": true, "width": "100%", "height": "600", "colorTheme": "dark" }
-            </script>
+        <div id="calc_pip" class="tab-content">
+            <h2 class="widget-title">Pip Value Engine</h2>
+            <div class="widget-card">
+                <div id="pip-container">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"Calculator":"pip-value-calculator","ContainerId":"pip-container"});
+                    </script>
+                </div>
+            </div>
         </div>
 
-        <div id="fx_cross" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-            { "width": "100%", "height": "600", "currencies": ["EUR","USD","JPY","GBP"], "colorTheme": "dark" }
-            </script>
+        <div id="calc_profit" class="tab-content">
+            <h2 class="widget-title">ROI Forecast</h2>
+            <div class="widget-card">
+                <div id="prof-container">
+                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
+                    <script type="text/javascript">
+                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"Calculator":"profit-calculator","ContainerId":"prof-container"});
+                    </script>
+                </div>
+            </div>
         </div>
 
         <div id="fx_screener" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-            { "width": "100%", "height": "600", "defaultColumn": "overview", "market": "forex", "colorTheme": "dark" }
-            </script>
+            <h2 class="widget-title">Market Screener</h2>
+            <div class="widget-card" style="background: #131722;">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                { "width": "100%", "height": "600", "defaultColumn": "overview", "market": "forex", "colorTheme": "dark" }
+                </script>
+            </div>
         </div>
 
-        <div id="crypto_screener" class="tab-content">
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-            { "width": "100%", "height": "600", "defaultColumn": "overview", "screener_type": "crypto_mkt", "colorTheme": "dark" }
-            </script>
-        </div>
+        <footer>
+            <div class="disclaimer-section">
+                <b>Affiliate Transparency:</b>
+                Some links on this site are affiliate links. This means we may earn a small commission at no extra cost to you. Trust comes before profit: always make decisions based on what’s best for your journey.
+            </div>
+            <div class="disclaimer-section">
+                <b>Risk Warning:</b>
+                Forex and CFD trading involves high risk. Never trade with money you cannot afford to lose. Content is for educational purposes only.
+            </div>
+            <div style="text-align: center; margin-top: 30px; opacity: 0.5;">© 2025 TradeUnfold.com | Professional Intelligence Suite</div>
+        </footer>
     </main>
 </div>
-
-<footer>
-    <div class="disclaimer-section">
-        <b>Affiliate Transparency:</b>
-        Some links on this site are affiliate links. That means we may earn a small commission if you choose to buy through them- at no extra cost to you. But trust comes before profit: it’s always more important that you make your own decisions based on what’s best for your trading journey, while taking into account all the considerations and warnings we explain on our website. If you still decide to trade in online forex, CFDs, or with a prop firm, we want you to do so with a clear understanding of the risks and as a fully informed choice.
-    </div>
-    <div class="disclaimer-section">
-        <b>Risk Warning:</b>
-        Trading financial instruments such as forex, CFDs, and prop firm challenges involves a high level of risk. You should never trade with money you cannot afford to lose. The content on this website is strictly for educational purposes and should not be taken as financial advice. Always do your own research before making trading decisions.
-    </div>
-    <div style="text-align: center; margin-top: 20px;">© 2025 TradeUnfold.com. All Rights Reserved.</div>
-</footer>
 
 <script>
     function openTab(evt, tabName) {
         var i, tabcontent, navlinks;
         tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; tabcontent[i].classList.remove("active"); }
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
         navlinks = document.querySelectorAll("nav a");
-        for (i = 0; i < navlinks.length; i++) { navlinks[i].classList.remove("active"); }
+        for (i = 0; i < navlinks.length; i++) {
+            navlinks[i].classList.remove("active");
+        }
         document.getElementById(tabName).style.display = "block";
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
+        
+        // Scroll main content area to top
+        document.getElementById('content-area').scrollTop = 0;
     }
 </script>
 
