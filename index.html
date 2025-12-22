@@ -3,203 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeUnfold | Master Intelligence Terminal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>TradeUnfold | Professional Trading Dashboard</title>
     <style>
-        :root { --primary: #0ab8b6; --bg: #030712; --card: #0f172a; --text: #f8fafc; --muted: #94a3b8; }
+        :root {
+            --bg-color: #0F0F0F;
+            --sidebar-color: #1A1A1A;
+            --text-color: #DBDBDB;
+            --accent-color: #2962FF;
+            --border-color: #333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        #main-container {
+            display: flex;
+            flex: 1;
+        }
+
+        nav {
+            width: 250px;
+            background-color: var(--sidebar-color);
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        nav h2 { font-size: 1.2rem; color: var(--accent-color); margin-bottom: 20px; }
         
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+        .nav-group { margin-bottom: 25px; }
+        .nav-group h3 { font-size: 0.8rem; text-transform: uppercase; color: #666; letter-spacing: 1px; }
 
-        /* Header */
-        .header { background: #000; padding: 20px; border-bottom: 2px solid var(--primary); text-align: center; position: sticky; top: 0; z-index: 2000; }
-        .logo-img { height: 70px; transition: 0.3s; }
-        .logo-img:hover { filter: drop-shadow(0 0 10px var(--primary)); }
-
-        .main-layout { display: flex; flex-direction: column; min-height: 100vh; }
-
-        /* Sidebar (Desktop) / Bottom Nav (Mobile) */
-        .sidebar { 
-            background: #000; 
-            border-right: 1px solid #1e293b; 
-            padding: 25px; 
-            width: 280px; 
-            position: fixed; 
-            height: 100vh; 
-            top: 112px;
-            z-index: 1000;
+        nav a {
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            transition: 0.3s;
         }
 
-        .nav-item { 
-            display: block; width: 100%; padding: 14px 20px; margin-bottom: 10px; 
-            background: transparent; border: 1px solid #1e293b; border-radius: 12px; 
-            color: var(--muted); text-align: left; cursor: pointer; font-weight: 700; 
-            font-size: 13px; text-transform: uppercase; transition: 0.3s; 
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: white;
         }
 
-        .nav-item.active { background: var(--primary); color: #000; border-color: var(--primary); box-shadow: 0 0 20px rgba(10, 184, 182, 0.3); }
-
-        /* Canvas / Content */
-        .canvas { 
-            flex: 1; 
-            margin-left: 280px; 
-            padding: 40px; 
-            width: calc(100% - 280px);
-            max-width: 1400px;
+        /* Content Area */
+        main {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
         }
 
-        .tool-panel { display: none; animation: slideUp 0.4s ease-out; }
-        .tool-panel.active { display: block; }
-        
-        h1 { font-size: clamp(24px, 5vw, 42px); font-weight: 900; margin-bottom: 8px; color: var(--primary); text-align: left; }
-        .sub { color: var(--muted); margin-bottom: 30px; font-size: 16px; }
-
-        /* The Widget Container - MASSIVE ON DESKTOP */
-        .widget-card { 
-            background: #ffffff; 
-            border-radius: 24px; 
-            padding: 15px; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            width: 100%;
-            min-height: 600px;
+        .widget-section {
+            display: none; /* Hidden by default */
         }
 
-        /* Hide specific elements to clean the look */
-        .tradingview-widget-copyright { display: none !important; }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 1024px) {
-            .sidebar { 
-                width: 100%; height: auto; position: fixed; bottom: 0; top: auto; 
-                display: flex; overflow-x: auto; padding: 10px; border-right: none; 
-                border-top: 1px solid #1e293b; gap: 10px;
-            }
-            .nav-item { min-width: 160px; margin-bottom: 0; white-space: nowrap; font-size: 11px; padding: 12px; }
-            .canvas { margin-left: 0; width: 100%; padding: 20px; padding-bottom: 100px; }
-            .header { padding: 15px; }
-            .logo-img { height: 50px; }
-            .widget-card { min-height: 500px; padding: 5px; }
+        .widget-section.active {
+            display: block;
         }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .widget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        /* Footer & Disclaimers */
+        footer {
+            background-color: var(--sidebar-color);
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .disclaimer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .disclaimer-title {
+            font-weight: bold;
+            color: var(--accent-color);
+            display: block;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            #main-container { flex-direction: column; }
+            nav { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+        }
     </style>
 </head>
 <body>
 
-<header class="header">
-    <a href="https://tradeunfold.com">
-        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold" class="logo-img">
-    </a>
-</header>
+<div id="main-container">
+    <nav>
+        <h2>TradeUnfold</h2>
+        
+        <div class="nav-group">
+            <h3>Markets</h3>
+            <a href="#" onclick="showSection('market-pulse')" class="active">Market Pulse</a>
+            <a href="#" onclick="showSection('heatmaps')">Heatmaps</a>
+        </div>
 
-<div class="main-layout">
-    <nav class="sidebar">
-        <button class="nav-item active" onclick="openTool(event, 'lot')">Position Builder</button>
-        <button class="nav-item" onclick="openTool(event, 'pip')">Pip Value</button>
-        <button class="nav-item" onclick="openTool(event, 'profit')">Profit Targets</button>
-        <button class="nav-item" onclick="openTool(event, 'margin')">Margin Audit</button>
-        <button class="nav-item" onclick="openTool(event, 'conv')">Currency Pulse</button>
-        <button class="nav-item" onclick="openTool(event, 'cal')">Market Events</button>
+        <div class="nav-group">
+            <h3>Analysis</h3>
+            <a href="#" onclick="showSection('charts')">Advanced Charts</a>
+            <a href="#" onclick="showSection('technical')">Technical Analysis</a>
+        </div>
+
+        <div class="nav-group">
+            <h3>Assets</h3>
+            <a href="#" onclick="showSection('stocks')">Stocks</a>
+            <a href="#" onclick="showSection('forex-crypto')">Forex & Crypto</a>
+        </div>
+
+        <div class="nav-group">
+            <h3>Tools</h3>
+            <a href="#" onclick="showSection('calculators')">Calculators</a>
+        </div>
     </nav>
 
-    <main class="canvas">
-        
-        <section id="lot" class="tool-panel active">
-            <h1>Position Builder</h1>
-            <p class="sub">Calculate precise lot sizes to control your risk exposure.</p>
-            <div class="widget-card">
-                <div id="ps-calc">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"position-size-calculator","ContainerId":"ps-calc"});
-                    </script>
-                </div>
+    <main id="content">
+        <section id="market-pulse" class="widget-section active">
+            <h1>Market Pulse</h1>
+            <div style="margin-bottom: 20px;">
+                <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
+                <tv-market-summary direction="horizontal" theme="dark"></tv-market-summary>
             </div>
-        </section>
-
-        <section id="pip" class="tool-panel">
-            <h1>Pip Value</h1>
-            <p class="sub">Discover the exact dollar value of a single pip for any pair.</p>
-            <div class="widget-card">
-                <div id="pv-calc">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"pip-value-calculator","ContainerId":"pv-calc"});
-                    </script>
-                </div>
-            </div>
-        </section>
-
-        <section id="profit" class="tool-panel">
-            <h1>Profit Targets</h1>
-            <p class="sub">Project your ROI before executing the trade.</p>
-            <div class="widget-card">
-                <div id="pr-calc">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"pr-calc"});
-                    </script>
-                </div>
-            </div>
-        </section>
-
-        <section id="margin" class="tool-panel">
-            <h1>Margin Audit</h1>
-            <p class="sub">Verify the required capital for your leveraged positions.</p>
-            <div class="widget-card">
-                <div id="m-calc">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"margin-calculator","ContainerId":"m-calc"});
-                    </script>
-                </div>
-            </div>
-        </section>
-
-        <section id="conv" class="tool-panel">
-            <h1>Currency Pulse</h1>
-            <p class="sub">Real-time exchange rates for global currencies.</p>
-            <div class="widget-card">
-                <div id="cc-calc">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript">
-                        RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogIzBhYjhiNjsgY29sb3I6IHdoaXRlOw==", "ContainerWidth":"100%","IsDisplayTitle":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"currency-converter","ContainerId":"cc-calc"});
-                    </script>
-                </div>
-            </div>
-        </section>
-
-        <section id="cal" class="tool-panel">
-            <h1>Market Events</h1>
-            <p class="sub">Stay ahead of high-impact economic news.</p>
-            <div class="widget-card" style="background: transparent;">
+            <div class="widget-grid">
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-                    {
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "width": "100%",
-                    "height": "600",
-                    "locale": "en",
-                    "importanceFilter": "-1,0,1"
-                    }
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "width": "100%", "height": "550", "tabs": [ { "title": "Indices", "symbols": [ { "s": "FOREXCOM:SPXUSD" }, { "s": "FOREXCOM:NSXUSD" } ] } ] }
+                    </script>
+                </div>
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                    { "symbol": "NASDAQ:AAPL", "colorTheme": "dark", "width": "100%" }
                     </script>
                 </div>
             </div>
         </section>
 
-    </main>
+        <section id="heatmaps" class="widget-section">
+            <h1>Market Heatmaps</h1>
+            <h3>Stock Heatmap (S&P 500)</h3>
+            <div class="tradingview-widget-container" style="height:500px;">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                { "dataSource": "SPX500", "blockSize": "market_cap_basic", "blockColor": "change", "colorTheme": "dark", "width": "100%", "height": "100%" }
+                </script>
+            </div>
+            <h3 style="margin-top:40px;">Crypto Heatmap</h3>
+            <div class="tradingview-widget-container" style="height:500px;">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+                { "dataSource": "Crypto", "blockSize": "market_cap_calc", "blockColor": "24h_close_change|5", "colorTheme": "dark", "width": "100%", "height": "100%" }
+                </script>
+            </div>
+        </section>
+
+        <section id="charts" class="widget-section">
+            <h1>Advanced Analysis</h1>
+            <div class="tradingview-widget-container" style="height:600px;">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                { "symbol": "NASDAQ:AAPL", "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "1", "locale": "en", "enable_publishing": false, "allow_symbol_change": true, "container_id": "tradingview_chart" }
+                </script>
+            </div>
+        </section>
+
+        <section id="calculators" class="widget-section">
+            <h1>Trading Calculators</h1>
+            <p>Calculator widgets (Position Sizing/Pip) typically require custom JS or 3rd party embeds. 
+               <br><br><em>Standard Work Placeholder: Custom logic for calculators to be injected here.</em></p>
+        </section>
+
+        </main>
 </div>
 
+<footer>
+    <div class="disclaimer-container">
+        <span class="disclaimer-title">Affiliate Transparency:</span>
+        Some links on this site are affiliate links. That means we may earn a small commission if you choose to buy through them- at no extra cost to you. But trust comes before profit: it’s always more important that you make your own decisions based on what’s best for your trading journey, while taking into account all the considerations and warnings we explain on our website. If you still decide to trade in online forex, CFDs, or with a prop firm, we want you to do so with a clear understanding of the risks and as a fully informed choice.
+
+        <span class="disclaimer-title">Risk Warning:</span>
+        Trading financial instruments such as forex, CFDs, and prop firm challenges involves a high level of risk. You should never trade with money you cannot afford to lose. The content on this website is strictly for educational purposes and should not be taken as financial advice. Always do your own research before making trading decisions.
+        
+        <p style="text-align:center; margin-top:30px; opacity:0.6;">
+            © 2025 TradeUnfold.com. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
 <script>
-    function openTool(e, name) {
-        document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-        document.getElementById(name).classList.add('active');
-        e.currentTarget.classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
+    function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll('.widget-section');
+        sections.forEach(s => s.classList.remove('active'));
+        
+        // Remove active class from nav
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(l => l.classList.remove('active'));
+
+        // Show selected section
+        document.getElementById(sectionId).classList.add('active');
+        
+        // Add active class to clicked link
+        event.currentTarget.classList.add('active');
     }
 </script>
+
 </body>
 </html>
