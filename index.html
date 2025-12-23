@@ -19,20 +19,20 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text-dark); overflow-x: hidden; }
 
-        /* --- New Header --- */
+        /* --- Updated Header with Absolute Links --- */
         .custom-header { background: linear-gradient(to right, #f8f9fa, #ffffff); border-bottom: 3px solid var(--primary); padding: 20px; position: sticky; top: 0; z-index: 1000; }
         .header-inner { max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; row-gap: 20px; }
         .nav-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(15px, 3vw, 25px); width: 100%; }
         .nav-links a { color: #000; text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
-        .btn-contact { background-color: var(--primary); color: #000 !important; padding: 12px 24px; border-radius: 4px; box-shadow: 0 4px 0px var(--primary-dark); font-weight: 800; }
+        .btn-contact { background-color: var(--primary); color: #000 !important; padding: 12px 24px; border-radius: 4px; box-shadow: 0 4px 0px var(--primary-dark); font-weight: 800; display: inline-block; }
 
         /* --- Layout --- */
         .wrapper { display: flex; min-height: 80vh; max-width: 1400px; margin: 0 auto; }
 
         aside { width: 280px; background: white; border-right: 1px solid var(--border); padding: 30px 20px; }
         .aside-cat { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 800; letter-spacing: 1px; margin: 25px 0 10px 10px; }
-        .side-link { display: block; padding: 12px 15px; color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 8px; margin-bottom: 5px; transition: 0.2s; }
+        .side-link { display: block; padding: 12px 15px; color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 8px; margin-bottom: 5px; transition: 0.2s; cursor: pointer; }
         .side-link:hover { background: #f0fdfa; color: var(--primary); }
         .side-link.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(85, 201, 200, 0.3); }
 
@@ -44,27 +44,18 @@
         .seo-box { margin-bottom: 25px; line-height: 1.6; }
         .seo-box h2 { font-size: 24px; margin-bottom: 15px; color: #111; }
         .seo-box p { margin-bottom: 15px; color: var(--text-muted); }
-        .seo-box ul { margin: 15px 0; padding-left: 20px; color: var(--text-muted); }
+        .seo-box ul { margin: 15px 0; padding-left: 20px; color: var(--text-muted); list-style: disc; }
         .seo-box li { margin-bottom: 8px; }
         .seo-link { color: var(--primary-dark); font-weight: 700; text-decoration: none; border-bottom: 1px solid transparent; }
         .seo-link:hover { border-bottom: 1px solid var(--primary-dark); }
 
         .widget-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border); margin-bottom: 40px; }
 
-        /* --- New Footer --- */
-        .custom-footer { background-color: #000; color: white; padding: 60px 20px; font-family: 'Segoe UI', sans-serif; text-align: center; margin-top: 50px; }
-        .footer-grid { max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 40px; }
-        .footer-col { flex: 1 1 200px; text-align: center; }
-        .footer-logo-wrap { display: inline-block; background: white; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
-        .footer-links { list-style: none; padding: 0; }
-        .footer-links a { color: var(--primary); text-decoration: none; line-height: 2; transition: 0.3s; }
-        .footer-links a:hover { text-decoration: underline; }
-
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 1024px) {
             .wrapper { flex-direction: column; }
-            aside { width: 100%; display: flex; overflow-x: auto; padding: 10px; position: sticky; top: 180px; z-index: 900; background: white; }
+            aside { width: 100%; display: flex; overflow-x: auto; padding: 10px; position: sticky; top: 150px; z-index: 900; background: white; }
             .side-link { white-space: nowrap; margin-right: 10px; }
             .aside-cat { display: none; }
             main { padding: 20px; }
@@ -76,34 +67,34 @@
 <header class="custom-header">
   <div class="header-inner">
     <div style="flex: 1 1 300px; display: flex; justify-content: flex-start; min-width: 280px;">
-      <a href="/">
+      <a href="https://tradeunfold.com">
         <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="max-height: 140px; width: auto; display: block;">
       </a>
     </div>
     <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
+      <a href="https://tradeunfold.com">Home</a>
+      <a href="https://tradeunfold.com/blog">Blog</a>
       <a href="https://tradeunfold.github.io/TradeUnfold-Trading-Tools" target="_blank" rel="noopener noreferrer">Trading Tools</a>
-      <a href="/about">About</a>
-      <a href="/contact" class="btn-contact">Contact Us</a>
+      <a href="https://tradeunfold.com/about">About</a>
+      <a href="https://tradeunfold.com/contact" class="btn-contact">Contact Us</a>
     </div>
   </div>
 </header>
 
 <div class="wrapper">
     <aside>
-        <div class="aside-cat">Intelligence Widgets</div>
-        <a href="#" class="side-link active" onclick="openTool(event, 'summary')">Market Summary</a>
-        <a href="#" class="side-link" onclick="openTool(event, 'tech')">Technical Gauge</a>
+        <div class="aside-cat">Intelligence Hub</div>
+        <a class="side-link active" onclick="openTool(event, 'summary')">Market Summary</a>
+        <a class="side-link" onclick="openTool(event, 'tech')">Technical Gauge</a>
 
         <div class="aside-cat">Forex Calculators</div>
-        <a href="#" class="side-link" onclick="openTool(event, 'pip')">Pip Value Engine</a>
-        <a href="#" class="side-link" onclick="openTool(event, 'conv')">Currency Converter</a>
-        <a href="#" class="side-link" onclick="openTool(event, 'fibo')">Fibonacci Levels</a>
-        <a href="#" class="side-link" onclick="openTool(event, 'margin')">Margin Calculator</a>
-        <a href="#" class="side-link" onclick="openTool(event, 'draw')">Drawdown Simulator</a>
-        <a href="#" class="side-link" onclick="openTool(event, 'profit')">P&L Predictor</a>
-        <a href="#" class="side-link" onclick="openTool(event, 'lots')">Position Size (Lots)</a>
+        <a class="side-link" onclick="openTool(event, 'pip')">Pip Value Engine</a>
+        <a class="side-link" onclick="openTool(event, 'conv')">Currency Converter</a>
+        <a class="side-link" onclick="openTool(event, 'fibo')">Fibonacci Levels</a>
+        <a class="side-link" onclick="openTool(event, 'margin')">Margin Calculator</a>
+        <a class="side-link" onclick="openTool(event, 'draw')">Drawdown Simulator</a>
+        <a class="side-link" onclick="openTool(event, 'profit')">P&L Predictor</a>
+        <a class="side-link" onclick="openTool(event, 'lots')">Position Size (Lots)</a>
     </aside>
 
     <main id="main-scroll">
@@ -129,139 +120,137 @@
         <section id="pip" class="tab-content">
             <div class="seo-box">
                 <h2>What is a Pip? Forex Price Essentials</h2>
-                <p>In currency trading, a Pip (Percentage in Point) tracks the smallest price fluctuation. Understanding pips is vital for calculating profits and managing risk. Most majors move in 0.0001 increments, while JPY pairs and Metals use 0.01.</p>
-                <p>Master the basics in our <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Forex Trading Guide</a> and learn about <a href="https://tradeunfold.com/2025/07/23/truth-about-forex-brokers/" class="seo-link">Broker Truths</a> and <a href="https://tradeunfold.com/2025/07/23/forex-broker-scams/" class="seo-link">Common Scams</a>.</p>
+                <p>In currency trading, a Pip (Percentage in Point) tracks the smallest price fluctuation. Understanding pips is vital for calculating profits and managing risk.</p>
+                <ul>
+                    <li><strong>Major Pairs (EUR/USD):</strong> 0.0001 movement</li>
+                    <li><strong>JPY Pairs & Metals:</strong> 0.01 movement</li>
+                </ul>
+                <p>Master the basics in our <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Forex Trading Guide</a>, read the <a href="https://tradeunfold.com/2025/07/23/truth-about-fx-brokers/" class="seo-link">Truth About Brokers</a>, and avoid <a href="https://tradeunfold.com/2025/07/23/forex-broker-scams/" class="seo-link">Scams</a>.</p>
             </div>
             <div class="widget-card">
-                <div id="pip-value-calculator-284368">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"pip-value-calculator","ContainerId":"pip-value-calculator-284368"});</script>
-                </div>
+                <div id="pip-value-calculator-284368"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"pip-value-calculator","ContainerId":"pip-value-calculator-284368"});</script></div>
             </div>
         </section>
 
         <section id="conv" class="tab-content">
             <div class="seo-box">
                 <h2>Real-Time Currency & Crypto Converter</h2>
-                <p>Our Live Converter provides instant interbank rates for fiat, metals, and top cryptocurrencies like Bitcoin and XRP. Ideal for international traders managing diverse assets.</p>
-                <p>New to FX? Start with our <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Forex Guide</a> or learn about <a href="https://tradeunfold.com/2025/07/23/truth-about-forex-brokers/" class="seo-link">Broker Safety</a>.</p>
+                <p>Monitor XRP to USD or major fiat pairs with live interbank feeds. Our multi-asset converter supports Gold, Silver, and top cryptocurrencies.</p>
+                <p>Stay secure: Read the <a href="https://tradeunfold.com/2025/07/23/truth-about-fx-brokers/" class="seo-link">Truth About Brokers</a> and our <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Forex Guide</a>.</p>
             </div>
             <div class="widget-card">
-                <div id="currency-converter-478782">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","DefaultCurrencyFrom":"EUR","DefaultCurrencyTo":"USD","Calculator":"currency-converter","ContainerId":"currency-converter-478782"});</script>
-                </div>
+                <div id="currency-converter-478782"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","DefaultCurrencyFrom":"EUR","DefaultCurrencyTo":"USD","Calculator":"currency-converter","ContainerId":"currency-converter-478782"});</script></div>
             </div>
         </section>
 
         <section id="fibo" class="tab-content">
             <div class="seo-box">
-                <h2>Mastering Fibonacci Levels</h2>
-                <p>Fibonacci retracements and extensions are self-fulfilling technical indicators used by millions of traders. Use Retracements (0.382, 0.618) to "buy the dip" and Extensions (1.618) for profit targets.</p>
-                <p>Learn more in our guide on <a href="https://tradeunfold.com/how-to-read-trading-chart" class="seo-link">how to read a trading chart</a>.</p>
+                <h2>Mastering Fibonacci Retracement & Extension</h2>
+                <p>Fibonacci levels work due to their self-fulfilling popularity among global traders. Use retracements to find "buy the dip" zones and extensions for profit targets.</p>
+                <p>Learn to <a href="https://tradeunfold.com/how-to-read-trading-chart" class="seo-link">read trading charts</a> to master Fibonacci geometry.</p>
             </div>
             <div class="widget-card">
-                <div id="fibonacci-calculator-591889">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"fibonacci-calculator","ContainerId":"fibonacci-calculator-591889"});</script>
-                </div>
+                <div id="fibonacci-calculator-591889"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"fibonacci-calculator","ContainerId":"fibonacci-calculator-591889"});</script></div>
             </div>
         </section>
 
         <section id="margin" class="tab-content">
             <div class="seo-box">
-                <h2>Leverage & Margin Trading</h2>
-                <p>Leverage acts as a multiplier for your capital but increases risk. Margin is the required deposit to keep trades open. Master these concepts in our <a href="https://tradeunfold.com/leverage-in-trading" class="seo-link">Leverage Guide</a>.</p>
+                <h2>Forex Leverage & Margin Calculator</h2>
+                <p>Leverage amplifies your buying power and risk equally. Margin is the "good faith deposit" held by your broker. Master these ratios in our <a href="https://tradeunfold.com/leverage-in-trading" class="seo-link">Leverage Guide</a>.</p>
             </div>
             <div class="widget-card">
-                <div id="margin-calculator-759363">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"margin-calculator","ContainerId":"margin-calculator-759363"});</script>
-                </div>
+                <div id="margin-calculator-759363"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"margin-calculator","ContainerId":"margin-calculator-759363"});</script></div>
             </div>
         </section>
 
         <section id="draw" class="tab-content">
             <div class="seo-box">
-                <h2>Forex Drawdown Simulator</h2>
-                <p>Consecutive losses can wipe out an account. Use this tool to simulate equity risk. A 7% risk per trade can lose 50% of your account in 10 losses. Stay safe by following our <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Fundamentals</a> and avoiding <a href="https://tradeunfold.com/2025/07/23/forex-broker-scams/" class="seo-link">Broker Scams</a>.</p>
+                <h2>Forex Drawdown & Risk Simulator</h2>
+                <p>Prevent account blowouts by simulating consecutive losses. Remember: a 50% loss requires a 100% gain to recover. Learn about <a href="https://tradeunfold.com/2025/07/23/forex-broker-scams/" class="seo-link">Scams</a> and <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Risk Management</a>.</p>
             </div>
             <div class="widget-card">
-                <div id="drawdown-calculator-590242">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"drawdown-calculator","ContainerId":"drawdown-calculator-590242"});</script>
-                </div>
+                <div id="drawdown-calculator-590242"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"drawdown-calculator","ContainerId":"drawdown-calculator-590242"});</script></div>
             </div>
         </section>
 
         <section id="profit" class="tab-content">
             <div class="seo-box">
                 <h2>Trading Profit & Loss Calculator</h2>
-                <p>Project the outcome of any trade across Forex, Crypto, or Stocks. Understanding potential ROI is critical. Plan smarter with our <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Trading Guide</a> and identify <a href="https://tradeunfold.com/2025/07/23/truth-about-forex-brokers/" class="seo-link">Safe Brokers</a>.</p>
+                <p>Project outcomes for Forex, Crypto, and Stocks. Accurate ROI planning is essential for long-term survival. See our <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Strategy Guide</a> for more.</p>
             </div>
             <div class="widget-card">
-                <div id="profit-calculator-342763">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"profit-calculator-342763"});</script>
-                </div>
+                <div id="profit-calculator-342763"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"profit-calculator-342763"});</script></div>
             </div>
         </section>
 
         <section id="lots" class="tab-content">
             <div class="seo-box">
-                <h2>Understanding Forex Lot Sizes</h2>
-                <p>A Lot defines your trade size. Standard (100k), Mini (10k), and Micro (1k) lots help manage risk. Learn more in <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Position Sizing 101</a>.</p>
+                <h2>Forex Lot Size & Position Architect</h2>
+                <p>Control your cost-per-pip by choosing the right lot size: Standard (1.0), Mini (0.1), or Micro (0.01). Read <a href="http://tradeunfold.com/forex-trading-guide" class="seo-link">Position Sizing 101</a>.</p>
             </div>
             <div class="widget-card">
-                <div id="position-size-calculator-360501">
-                    <script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script>
-                    <script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"position-size-calculator","ContainerId":"position-size-calculator-360501"});</script>
-                </div>
+                <div id="position-size-calculator-360501"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"100%","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"position-size-calculator","ContainerId":"position-size-calculator-360501"});</script></div>
             </div>
         </section>
     </main>
 </div>
 
-<footer class="custom-footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <div class="footer-logo-wrap">
+<footer style="background-color:#000;color:white;padding:60px 20px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;text-align:center">
+
+  <div style="max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:40px">
+
+    <div style="flex:1 1 250px;text-align:center;margin-bottom:20px">
+      <div style="display:inline-block;background:white;padding:15px;border-radius:12px">
         <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="height:100px;display:block;margin:auto">
       </div>
       <p style="font-size:18px;font-weight:700;color:#aaa;margin-top:12px">Unfolding The World Of Trading</p>
     </div>
-    <div class="footer-col">
+
+    <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
       <h4 style="font-size:18px;margin-bottom:15px">Pages</h4>
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+      <ul style="padding:0;margin:0;text-align:center;list-style:none">
+        <li><a href="https://tradeunfold.com" style="color:#55c9c8;text-decoration:none;line-height:2">Home</a></li>
+        <li><a href="https://tradeunfold.com/blog" style="color:#55c9c8;text-decoration:none;line-height:2">Blog</a></li>
+        <li><a href="https://tradeunfold.com/about" style="color:#55c9c8;text-decoration:none;line-height:2">About</a></li>
+        <li><a href="https://tradeunfold.com/contact" style="color:#55c9c8;text-decoration:none;line-height:2">Contact</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+
+    <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
       <h4 style="font-size:18px;margin-bottom:15px">Legal</h4>
-      <ul class="footer-links">
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/disclaimer">Disclaimer</a></li>
-        <li><a href="/terms-of-use">Terms of Use</a></li>
+      <ul style="padding:0;margin:0;text-align:center;list-style:none">
+        <li><a href="https://tradeunfold.com/privacy-policy" style="color:#55c9c8;text-decoration:none;line-height:2">Privacy Policy</a></li>
+        <li><a href="https://tradeunfold.com/disclaimer" style="color:#55c9c8;text-decoration:none;line-height:2">Disclaimer</a></li>
+        <li><a href="https://tradeunfold.com/terms-of-use" style="color:#55c9c8;text-decoration:none;line-height:2">Terms of Use</a></li>
       </ul>
-      <p style="font-size:14px;color:#aaa;margin-top:20px">
-        Email: <a href="mailto:info@tradeunfold.com" style="color:var(--primary);text-decoration:none">info@tradeunfold.com</a>
+      <p style="font-size:14px;color:#aaa;margin-top:20px;line-height:1.5">
+        Email: <a href="mailto:info@tradeunfold.com" style="color:#55c9c8;text-decoration:none">info@tradeunfold.com</a>
       </p>
     </div>
+
   </div>
+
   <div style="max-width:900px;margin:30px auto 0;text-align:center">
     <p style="font-size:13px;color:#888;margin-bottom:15px;line-height:1.6">
-      <strong>Affiliate Transparency:</strong> Some links on this site are affiliate links. Trust comes before profit: always make decisions based on what’s best for your trading journey.
+      <strong>Affiliate Transparency:</strong> Some links on this site are affiliate links. 
+      That means we may earn a small commission if you choose to buy through them- at no extra cost to you. 
+      But trust comes before profit: it’s always more important that you make your own decisions 
+      based on what’s best for your trading journey, while taking into account all the considerations and 
+      warnings we explain on our website. If you still decide to trade in online forex, CFDs, or with a prop firm, 
+      we want you to do so with a clear understanding of the risks and as a fully informed choice.
     </p>
     <p style="font-size:12px;color:#777;line-height:1.6">
-      <strong>Risk Warning:</strong> Trading financial instruments involves high risk. Never trade with money you cannot afford to lose.
+      <strong>Risk Warning:</strong> Trading financial instruments such as forex, CFDs, and prop firm challenges involves a high level of risk. 
+      You should never trade with money you cannot afford to lose. The content on this website is strictly for educational purposes 
+      and should not be taken as financial advice. Always do your own research before making trading decisions.
     </p>
   </div>
+
   <div style="text-align:center;border-top:1px solid #222;margin-top:40px;padding-top:20px;font-size:14px;color:#666">
     © 2025 <strong>TradeUnfold.com</strong>. All Rights Reserved.
   </div>
+
 </footer>
 
 <script>
