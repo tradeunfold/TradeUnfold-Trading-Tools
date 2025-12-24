@@ -1,12 +1,3 @@
-Here is your updated code. I have redesigned the **aside** navigation to group these new tools into logical sections and overhauled the **main** content with SEO-optimized descriptions and "Killer" CTA links to your blog.
-
-### Key SEO Improvements:
-
-* **Semantic HTML:** Used `<h2>` and `<p>` tags with keyword-rich descriptions (e.g., "Real-time data," "Market volatility," "Fundamental analysis").
-* **Contextual Internal Linking:** Every widget now includes a call-to-action linking to your blog to improve "Time on Site" and SEO authority.
-* **Dark Theme Consistency:** All widgets have been set to `dark` theme for a premium "Intelligence Hub" look.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,51 +9,51 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
         :root {
             --primary: #55c9c8;
             --primary-dark: #3ba3a2;
-            --bg: #0a0a0a; /* Darker background for the hub */
-            --card-bg: #161616;
-            --text-dark: #ffffff;
-            --text-muted: #a1a1aa;
+            --bg: #f4f7f6;
+            --text-dark: #1a1a1a;
+            --text-muted: #64748b;
             --white: #ffffff;
-            --border: #27272a;
+            --border: #e2e8f0;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text-dark); overflow-x: hidden; }
 
         /* --- Header --- */
-        .custom-header { background: #000; border-bottom: 3px solid var(--primary); padding: 20px; position: sticky; top: 0; z-index: 1000; }
+        .custom-header { background: linear-gradient(to right, #f8f9fa, #ffffff); border-bottom: 3px solid var(--primary); padding: 20px; position: sticky; top: 0; z-index: 1000; }
         .header-inner { max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; row-gap: 20px; }
         .nav-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(15px, 3vw, 25px); width: 100%; }
-        .nav-links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a { color: #000; text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
         .btn-contact { background-color: var(--primary); color: #000 !important; padding: 12px 24px; border-radius: 4px; box-shadow: 0 4px 0px var(--primary-dark); font-weight: 800; display: inline-block; }
 
         /* --- Layout --- */
         .wrapper { display: flex; min-height: 80vh; max-width: 1400px; margin: 0 auto; }
 
-        aside { width: 280px; background: #111; border-right: 1px solid var(--border); padding: 30px 20px; height: calc(100vh - 100px); position: sticky; top: 100px; overflow-y: auto; }
-        .aside-cat { font-size: 11px; text-transform: uppercase; color: var(--primary); font-weight: 800; letter-spacing: 1px; margin: 25px 0 10px 10px; }
-        .side-link { display: block; padding: 12px 15px; color: #ccc; text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 8px; margin-bottom: 5px; transition: 0.2s; cursor: pointer; }
-        .side-link:hover { background: #1f1f1f; color: var(--primary); }
-        .side-link.active { background: var(--primary); color: #000; font-weight: 800; }
+        aside { width: 280px; background: white; border-right: 1px solid var(--border); padding: 30px 20px; }
+        .aside-cat { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 800; letter-spacing: 1px; margin: 25px 0 10px 10px; }
+        .side-link { display: block; padding: 12px 15px; color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 8px; margin-bottom: 5px; transition: 0.2s; cursor: pointer; }
+        .side-link:hover { background: #f0fdfa; color: var(--primary); }
+        .side-link.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(85, 201, 200, 0.3); }
 
         main { flex: 1; padding: 40px; background: var(--bg); }
         .tab-content { display: none; animation: fadeIn 0.4s ease; }
         .tab-content.active { display: block; }
         
+        /* SEO Content Styling */
         .seo-box { margin-bottom: 25px; line-height: 1.6; }
-        .seo-box h2 { font-size: 28px; margin-bottom: 10px; color: var(--primary); }
-        .seo-box p { margin-bottom: 15px; color: var(--text-muted); font-size: 16px; }
-        .blog-cta { display: inline-block; background: transparent; color: var(--primary); border: 1px solid var(--primary); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        .blog-cta:hover { background: var(--primary); color: #000; }
+        .seo-box h2 { font-size: 24px; margin-bottom: 15px; color: #111; }
+        .seo-box p { margin-bottom: 15px; color: var(--text-muted); }
+        .seo-link { color: var(--primary-dark); font-weight: 700; text-decoration: none; border-bottom: 1px solid transparent; }
+        .seo-link:hover { border-bottom: 1px solid var(--primary-dark); }
 
-        .widget-card { background: var(--card-bg); border-radius: 12px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border); margin-bottom: 60px; min-height: 400px; }
+        .widget-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border); margin-bottom: 40px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 1024px) {
             .wrapper { flex-direction: column; }
-            aside { width: 100%; display: flex; overflow-x: auto; height: auto; padding: 10px; position: sticky; top: 130px; z-index: 900; background: #111; border-right: none; border-bottom: 1px solid var(--border); }
+            aside { width: 100%; display: flex; overflow-x: auto; padding: 10px; position: sticky; top: 150px; z-index: 900; background: white; }
             .side-link { white-space: nowrap; margin-right: 10px; }
             .aside-cat { display: none; }
             main { padding: 20px; }
@@ -75,13 +66,13 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
   <div class="header-inner">
     <div style="flex: 1 1 300px; display: flex; justify-content: flex-start; min-width: 280px;">
       <a href="https://tradeunfold.com">
-        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="max-height: 100px; width: auto; display: block; filter: brightness(1.2);">
+        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="max-height: 140px; width: auto; display: block;">
       </a>
     </div>
     <div class="nav-links">
       <a href="https://tradeunfold.com">Home</a>
       <a href="https://tradeunfold.com/blog">Blog</a>
-      <a href="https://tradeunfold.github.io/TradeUnfold-Trading-Tools" target="_blank">Trading Tools</a>
+      <a href="https://tradeunfold.github.io/TradeUnfold-Trading-Tools" target="_blank" rel="noopener noreferrer">Trading Tools</a>
       <a href="https://tradeunfold.com/about">About</a>
       <a href="https://tradeunfold.com/contact" class="btn-contact">Contact Us</a>
     </div>
@@ -90,37 +81,36 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
 <div class="wrapper">
     <aside>
-        <div class="aside-cat">Macro Intelligence</div>
+        <div class="aside-cat">Market Intelligence</div>
         <a class="side-link active" onclick="openTool(event, 'summary')">Market Summary</a>
-        <a class="side-link" onclick="openTool(event, 'overview')">Market Overview</a>
-        <a class="side-link" onclick="openTool(event, 'data')">Live Market Data</a>
-        <a class="side-link" onclick="openTool(event, 'news')">Top Stories</a>
+        <a class="side-link" onclick="openTool(event, 'overview')">World Overview</a>
+        <a class="side-link" onclick="openTool(event, 'data')">Market Data Quotes</a>
+        <a class="side-link" onclick="openTool(event, 'stories')">Top Stories</a>
         <a class="side-link" onclick="openTool(event, 'calendar')">Economic Calendar</a>
 
-        <div class="aside-cat">Visual Analytics</div>
+        <div class="aside-cat">Visual Heatmaps</div>
         <a class="side-link" onclick="openTool(event, 's-heat')">Stock Heatmap</a>
         <a class="side-link" onclick="openTool(event, 'c-heat')">Crypto Heatmap</a>
         <a class="side-link" onclick="openTool(event, 'e-heat')">ETF Heatmap</a>
         <a class="side-link" onclick="openTool(event, 'f-heat')">Forex Heatmap</a>
 
-        <div class="aside-cat">Advanced Screeners</div>
-        <a class="side-link" onclick="openTool(event, 's-screen')">Stock Screener</a>
+        <div class="aside-cat">Asset Screeners</div>
         <a class="side-link" onclick="openTool(event, 'f-screen')">Forex Screener</a>
+        <a class="side-link" onclick="openTool(event, 's-screen')">Stock Screener</a>
         <a class="side-link" onclick="openTool(event, 'c-screen')">Crypto Screener</a>
-        <a class="side-link" onclick="openTool(event, 'c-market')">Crypto Market Cap</a>
+        <a class="side-link" onclick="openTool(event, 'c-mkt')">Crypto Market Cap</a>
 
         <div class="aside-cat">Technical Rates</div>
         <a class="side-link" onclick="openTool(event, 'cross')">Forex Cross Rates</a>
-        <a class="side-link" onclick="openTool(event, 'hotlist')">Stock Market Hotlist</a>
+        <a class="side-link" onclick="openTool(event, 'hotlist')">Stock Hotlists</a>
     </aside>
 
     <main id="main-scroll">
         
         <section id="summary" class="tab-content active">
             <div class="seo-box">
-                <h2>Visual Market Pulse</h2>
-                <p>Don't just track numbers; visualize momentum. Our market summary identifies the day's strongest movers across all asset classes instantly.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Master market momentum on our blog →</a>
+                <h2>Live Market Momentum Summary</h2>
+                <p>Track high-velocity price action across global indices and currency pairs with our real-time visual watchlist. Master trend identification and risk management by visiting our <a href="https://tradeunfold.com/blog" class="seo-link">Pro Trading Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
@@ -130,15 +120,14 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="overview" class="tab-content">
             <div class="seo-box">
-                <h2>Macro Market Overview</h2>
-                <p>Get a high-level perspective on global financial health. Track indices, futures, and bonds to understand the "big picture" of the global economy.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Learn Macro Trading Strategies →</a>
+                <h2>Macro Market Analysis & Global Indices</h2>
+                <p>Gain a professional macro perspective on global market performance including S&P 500, Gold, and Bonds. Learn to build institutional-grade trade setups on our <a href="https://tradeunfold.com/blog" class="seo-link">Trading Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                    { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "locale": "en", "width": "100%", "height": 600, "tabs": [ { "title": "Indices", "symbols": [ { "s": "FOREXCOM:SPXUSD" }, { "s": "FOREXCOM:NSXUSD" }, { "s": "FOREXCOM:DJI" }, { "s": "INDEX:NKY" }, { "s": "INDEX:DEU40" } ] }, { "title": "Futures", "symbols": [ { "s": "CME_MINI:ES1!" }, { "s": "CME:6E1!" }, { "s": "COMEX:GC1!" }, { "s": "NYMEX:CL1!" } ] } ] }
+                    { "colorTheme": "dark", "dateRange": "12M", "showChart": true, "locale": "en", "width": "100%", "height": 550, "tabs": [ { "title": "Indices", "symbols": [ { "s": "FOREXCOM:SPXUSD" }, { "s": "FOREXCOM:NSXUSD" }, { "s": "FOREXCOM:DJI" }, { "s": "INDEX:NKY" }, { "s": "INDEX:DEU40" }, { "s": "FOREXCOM:UKXGBP" } ] }, { "title": "Futures", "symbols": [ { "s": "BMFBOVESPA:ISP1!" }, { "s": "BMFBOVESPA:EUR1!" }, { "s": "CMCMARKETS:GOLD" }, { "s": "BMFBOVESPA:CCM1!" }, { "s": "NASDAQ:NDX" } ] }, { "title": "Bonds", "symbols": [ { "s": "EUREX:FGBL1!" }, { "s": "EUREX:FBTP1!" }, { "s": "EUREX:FGBM1!" } ] }, { "title": "Forex", "symbols": [ { "s": "FX:EURUSD" }, { "s": "FX:GBPUSD" }, { "s": "FX:USDJPY" }, { "s": "FX:USDCHF" }, { "s": "FX:AUDUSD" }, { "s": "FX:USDCAD" } ] } ] }
                     </script>
                 </div>
             </div>
@@ -146,25 +135,23 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="data" class="tab-content">
             <div class="seo-box">
-                <h2>Real-Time Market Data Stream</h2>
-                <p>Access institutional-grade data for indices, futures, and bonds. Stay informed with live Open, High, Low, and Close (OHLC) values.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">How to read raw market data →</a>
+                <h2>Institutional Market Quotes & OHLC Data</h2>
+                <p>Access precise Open, High, Low, and Close data for global financial instruments to refine your entry points. Discover advanced risk-to-reward secrets on our <a href="https://tradeunfold.com/blog" class="seo-link">Market Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-                    { "width": "100%", "height": 550, "symbolsGroups": [ { "name": "Indices", "symbols": [ { "name": "FOREXCOM:SPXUSD" }, { "name": "FOREXCOM:NSXUSD" }, { "name": "FOREXCOM:DJI" } ] }, { "name": "Forex", "symbols": [ { "name": "FX:EURUSD" }, { "name": "FX:GBPUSD" }, { "name": "FX:USDJPY" } ] } ], "colorTheme": "dark" }
+                    { "width": "100%", "height": 550, "symbolsGroups": [ { "name": "Indices", "symbols": [ { "name": "FOREXCOM:SPXUSD" }, { "name": "FOREXCOM:NSXUSD" }, { "name": "FOREXCOM:DJI" }, { "name": "INDEX:NKY" }, { "name": "INDEX:DEU40" }, { "name": "FOREXCOM:UKXGBP" } ] }, { "name": "Futures", "symbols": [ { "name": "BMFBOVESPA:ISP1!" }, { "name": "BMFBOVESPA:EUR1!" }, { "name": "CMCMARKETS:GOLD" }, { "name": "PYTH:WTI3!" }, { "name": "BMFBOVESPA:CCM1!" } ] }, { "name": "Bonds", "symbols": [ { "name": "EUREX:FGBL1!" }, { "name": "EUREX:FBTP1!" }, { "name": "EUREX:FGBM1!" } ] }, { "name": "Forex", "symbols": [ { "name": "FX:EURUSD" }, { "name": "FX:GBPUSD" }, { "name": "FX:USDJPY" }, { "name": "FX:USDCHF" }, { "name": "FX:AUDUSD" }, { "name": "FX:USDCAD" }, { "name": "OANDA:NZDUSD" } ] } ], "colorTheme": "dark" }
                     </script>
                 </div>
             </div>
         </section>
 
-        <section id="news" class="tab-content">
+        <section id="stories" class="tab-content">
             <div class="seo-box">
-                <h2>Breaking Financial Intelligence</h2>
-                <p>Market news moves fast. Our Top Stories widget delivers 20-second briefs on global crypto and stock events to keep your edge sharp.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Filter the noise: Trading News guide →</a>
+                <h2>Breaking Financial News & Market Briefs</h2>
+                <p>Stay ahead of market-moving volatility with 20-second news briefs designed for modern traders. Decode the impact of global news on our <a href="https://tradeunfold.com/blog" class="seo-link">Financial Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -178,15 +165,14 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="calendar" class="tab-content">
             <div class="seo-box">
-                <h2>The Global Economic Calendar</h2>
-                <p>Anticipate volatility before it happens. Track NFP, CPI, and central bank interest rate decisions with precision filters for every major currency.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Trading the News: Event Guide →</a>
+                <h2>High-Impact Economic Calendar</h2>
+                <p>Anticipate NFP, CPI, and central bank announcements to protect your capital from news-driven slippage. Read our guide on news-trading pitfalls at the <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-                    { "colorTheme": "dark", "isTransparent": false, "width": "100%", "height": 550, "importanceFilter": "-1,0,1" }
+                    { "colorTheme": "dark", "isTransparent": false, "width": "100%", "height": 550, "countryFilter": "ar,au,br,ca,cn,fr,de,in,id,it,jp,kr,mx,ru,sa,za,tr,gb,us,eu", "importanceFilter": "-1,0,1" }
                     </script>
                 </div>
             </div>
@@ -194,9 +180,8 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="s-heat" class="tab-content">
             <div class="seo-box">
-                <h2>Global Stock Heatmap</h2>
-                <p>Visualize sector rotation and market dominance. Our heatmap provides a macro view of the S&P 500, segmented by sector and market capitalization.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Spotting sector rotation early →</a>
+                <h2>S&P 500 Stock Market Heatmap</h2>
+                <p>Visualize sector rotation and market dominance across global stocks in real-time. Unfold profitable sector-picking strategies on our <a href="https://tradeunfold.com/blog" class="seo-link">Investment Blog</a>.</p>
             </div>
             <div class="widget-card" style="height: 600px;">
                 <div class="tradingview-widget-container">
@@ -210,9 +195,8 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="c-heat" class="tab-content">
             <div class="seo-box">
-                <h2>Crypto Asset Heatmap</h2>
-                <p>Navigate the crypto jungle with a birds-eye view of altcoin performance and Bitcoin dominance. Segment by coin type and 24h volatility.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Crypto Risk Management 101 →</a>
+                <h2>Cryptocurrency & Altcoin Heatmap</h2>
+                <p>Track Bitcoin dominance and 24h altcoin performance with institutional-grade data. Learn how to spot the next crypto moonshot on our <a href="https://tradeunfold.com/blog" class="seo-link">Crypto Blog</a>.</p>
             </div>
             <div class="widget-card" style="height: 600px;">
                 <div class="tradingview-widget-container">
@@ -226,9 +210,8 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="e-heat" class="tab-content">
             <div class="seo-box">
-                <h2>ETF Market Visualization</h2>
-                <p>Track institutional flow through the ETF Heatmap. Analyze exchange-traded funds by volume, dividend yield, and asset class performance.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Why ETFs belong in your portfolio →</a>
+                <h2>Global ETF Performance Heatmap</h2>
+                <p>Analyze institutional capital flows by filtering global ETFs by dividend yield and volume. Master portfolio diversification on our <a href="https://tradeunfold.com/blog" class="seo-link">Educational Blog</a>.</p>
             </div>
             <div class="widget-card" style="height: 600px;">
                 <div class="tradingview-widget-container">
@@ -242,9 +225,8 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="f-heat" class="tab-content">
             <div class="seo-box">
-                <h2>Real-Time Forex Heatmap</h2>
-                <p>Spot the strongest and weakest currencies in the blink of an eye. Our real-time matrix compares major pairs to identify high-probability trade setups.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Forex Correlation Secrets →</a>
+                <h2>Real-Time Forex Strength Heatmap</h2>
+                <p>Instantly identify strong and weak currencies to spot high-probability setups. Discover the secret of currency correlation on our <a href="https://tradeunfold.com/blog" class="seo-link">Forex Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -256,27 +238,10 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
             </div>
         </section>
 
-        <section id="s-screen" class="tab-content">
-            <div class="seo-box">
-                <h2>Professional Stock Screener</h2>
-                <p>Filter through thousands of US stocks based on market cap, performance, and volume. Identify "Most Active" or "Top Gaining" assets in seconds.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">How to scan for winning stocks →</a>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                    { "market": "america", "showToolbar": true, "colorTheme": "dark", "width": "100%", "height": 550 }
-                    </script>
-                </div>
-            </div>
-        </section>
-
         <section id="f-screen" class="tab-content">
             <div class="seo-box">
-                <h2>Advanced Forex Screener</h2>
-                <p>Scrutinize the global currency markets. Find pairs with the highest volatility or technical "Buy" signals across multiple timeframes.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Forex technical analysis tips →</a>
+                <h2>Professional Forex Pair Screener</h2>
+                <p>Filter thousands of currency crosses based on technical indicators and volatility. Learn advanced technical analysis on our <a href="https://tradeunfold.com/blog" class="seo-link">Analysis Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -288,11 +253,25 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
             </div>
         </section>
 
+        <section id="s-screen" class="tab-content">
+            <div class="seo-box">
+                <h2>Institutional Stock Market Screener</h2>
+                <p>Scan the US stock market for high-volume breakouts and fundamental growth. Refine your stock picking skills on our <a href="https://tradeunfold.com/blog" class="seo-link">Expert Trading Blog</a>.</p>
+            </div>
+            <div class="widget-card">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                    { "market": "america", "showToolbar": true, "colorTheme": "dark", "width": "100%", "height": 550 }
+                    </script>
+                </div>
+            </div>
+        </section>
+
         <section id="c-screen" class="tab-content">
             <div class="seo-box">
-                <h2>Global Crypto Screener</h2>
-                <p>Filter digital assets by exchange, performance, and volatility. Stay ahead of the next crypto moonshot with institutional-grade scanning.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Avoiding Crypto Scams Guide →</a>
+                <h2>Advanced Cryptocurrency Coin Screener</h2>
+                <p>Find the next crypto gem using advanced filters for market cap and performance. Avoid common crypto pitfalls by reading our <a href="https://tradeunfold.com/blog" class="seo-link">Blockchain Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -304,11 +283,10 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
             </div>
         </section>
 
-        <section id="c-market" class="tab-content">
+        <section id="c-mkt" class="tab-content">
             <div class="seo-box">
-                <h2>Crypto Market Capitalization</h2>
-                <p>Track the hierarchy of digital finance. This widget sorts crypto assets by total market value to reveal the true leaders of the blockchain space.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Understanding Market Cap vs Price →</a>
+                <h2>Global Crypto Market Cap Tracker</h2>
+                <p>Monitor the hierarchy of digital assets sorted by total circulating supply. Learn about market cycle psychology on our <a href="https://tradeunfold.com/blog" class="seo-link">Psychology Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -322,9 +300,8 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="cross" class="tab-content">
             <div class="seo-box">
-                <h2>Real-Time Forex Cross Rates</h2>
-                <p>Monitor currency strength against the world's major counterparts. Perfect for identifying arbitrage opportunities and relative strength trends.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Forex Arbitrage Explained →</a>
+                <h2>Live Forex Cross Rates Matrix</h2>
+                <p>Compare major currencies to identify arbitrage and relative strength opportunities. Master Forex fundamental analysis at the <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -338,9 +315,8 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 
         <section id="hotlist" class="tab-content">
             <div class="seo-box">
-                <h2>Stock Market Daily Hotlist</h2>
-                <p>Discover the most active stocks, top gainers, and top losers of the current trading session. Updated live as the market moves.</p>
-                <a href="https://tradeunfold.com/blog" class="blog-cta">Day Trading 101: Hotlist Guide →</a>
+                <h2>Daily Stock Market Hotlists</h2>
+                <p>Track top gainers, losers, and the most active stocks for the day instantly. Discover high-growth day trading strategies on our <a href="https://tradeunfold.com/blog" class="seo-link">Strategy Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -355,42 +331,61 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
     </main>
 </div>
 
-<footer style="background-color:#000;color:white;padding:60px 20px;font-family:inherit;text-align:center;border-top:1px solid var(--border)">
+<footer style="background-color:#000;color:white;padding:60px 20px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;text-align:center">
 
   <div style="max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:40px">
-    <div style="flex:1 1 250px;text-align:center;">
-      <div style="display:inline-block;background:white;padding:10px;border-radius:12px">
-        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="height:80px;display:block;margin:auto">
+
+    <div style="flex:1 1 250px;text-align:center;margin-bottom:20px">
+      <div style="display:inline-block;background:white;padding:15px;border-radius:12px">
+        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="height:100px;display:block;margin:auto">
       </div>
       <p style="font-size:18px;font-weight:700;color:#aaa;margin-top:12px">Unfolding The World Of Trading</p>
     </div>
 
-    <div style="flex:1 1 200px;text-align:center;">
-      <h4 style="font-size:18px;margin-bottom:15px; color:var(--primary)">Quick Links</h4>
-      <ul style="padding:0;margin:0;list-style:none">
+    <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
+      <h4 style="font-size:18px;margin-bottom:15px">Pages</h4>
+      <ul style="padding:0;margin:0;text-align:center;list-style:none">
         <li><a href="https://tradeunfold.com" style="color:#55c9c8;text-decoration:none;line-height:2">Home</a></li>
         <li><a href="https://tradeunfold.com/blog" style="color:#55c9c8;text-decoration:none;line-height:2">Blog</a></li>
+        <li><a href="https://tradeunfold.com/about" style="color:#55c9c8;text-decoration:none;line-height:2">About</a></li>
         <li><a href="https://tradeunfold.com/contact" style="color:#55c9c8;text-decoration:none;line-height:2">Contact</a></li>
       </ul>
     </div>
 
-    <div style="flex:1 1 200px;text-align:center;">
-      <h4 style="font-size:18px;margin-bottom:15px; color:var(--primary)">Legal</h4>
-      <ul style="padding:0;margin:0;list-style:none">
+    <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
+      <h4 style="font-size:18px;margin-bottom:15px">Legal</h4>
+      <ul style="padding:0;margin:0;text-align:center;list-style:none">
         <li><a href="https://tradeunfold.com/privacy-policy" style="color:#55c9c8;text-decoration:none;line-height:2">Privacy Policy</a></li>
+        <li><a href="https://tradeunfold.com/disclaimer" style="color:#55c9c8;text-decoration:none;line-height:2">Disclaimer</a></li>
         <li><a href="https://tradeunfold.com/terms-of-use" style="color:#55c9c8;text-decoration:none;line-height:2">Terms of Use</a></li>
       </ul>
+      <p style="font-size:14px;color:#aaa;margin-top:20px;line-height:1.5">
+        Email: <a href="mailto:info@tradeunfold.com" style="color:#55c9c8;text-decoration:none">info@tradeunfold.com</a>
+      </p>
     </div>
+
   </div>
 
-  <div style="max-width:900px;margin:30px auto 0;text-align:center; color:#777; font-size:12px;">
-      <p style="margin-bottom:10px"><strong>Affiliate Transparency:</strong> Some links are affiliate links. We may earn commission at no cost to you.</p>
-      <p><strong>Risk Warning:</strong> Trading involves high risk. Content is for educational purposes only.</p>
+  <div style="max-width:900px;margin:30px auto 0;text-align:center">
+    <p style="font-size:13px;color:#888;margin-bottom:15px;line-height:1.6">
+      <strong>Affiliate Transparency:</strong> Some links on this site are affiliate links. 
+      That means we may earn a small commission if you choose to buy through them- at no extra cost to you. 
+      But trust comes before profit: it’s always more important that you make your own decisions 
+      based on what’s best for your trading journey, while taking into account all the considerations and 
+      warnings we explain on our website. If you still decide to trade in online forex, CFDs, or with a prop firm, 
+      we want you to do so with a clear understanding of the risks and as a fully informed choice.
+    </p>
+    <p style="font-size:12px;color:#777;line-height:1.6">
+      <strong>Risk Warning:</strong> Trading financial instruments such as forex, CFDs, and prop firm challenges involves a high level of risk. 
+      You should never trade with money you cannot afford to lose. The content on this website is strictly for educational purposes 
+      and should not be taken as financial advice. Always do your own research before making trading decisions.
+    </p>
   </div>
 
   <div style="text-align:center;border-top:1px solid #222;margin-top:40px;padding-top:20px;font-size:14px;color:#666">
     © 2025 <strong>TradeUnfold.com</strong>. All Rights Reserved.
   </div>
+
 </footer>
 
 <script>
@@ -404,5 +399,3 @@ Here is your updated code. I have redesigned the **aside** navigation to group t
 </script>
 </body>
 </html>
-
-```
