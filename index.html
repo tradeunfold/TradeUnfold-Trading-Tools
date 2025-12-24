@@ -87,6 +87,11 @@
         <a class="side-link" onclick="openTool(event, 'stories')">Top Stories</a>
         <a class="side-link" onclick="openTool(event, 'calendar')">Economic Calendar</a>
 
+        <div class="aside-cat">Trading Calculators</div>
+        <a class="side-link" onclick="openTool(event, 'calc-pos')">Position Size</a>
+        <a class="side-link" onclick="openTool(event, 'calc-pip')">Pip Calculator</a>
+        <a class="side-link" onclick="openTool(event, 'calc-margin')">Margin Calculator</a>
+
         <div class="aside-cat">Heatmaps</div>
         <a class="side-link" onclick="openTool(event, 's-heat')">Stock Heatmap</a>
         <a class="side-link" onclick="openTool(event, 'c-heat')">Crypto Heatmap</a>
@@ -97,7 +102,6 @@
         <a class="side-link" onclick="openTool(event, 's-screen')">Stock Screener</a>
         <a class="side-link" onclick="openTool(event, 'f-screen')">Forex Screener</a>
         <a class="side-link" onclick="openTool(event, 'c-screen')">Crypto Screener</a>
-        <a class="side-link" onclick="openTool(event, 'c-mkt')">Crypto Market</a>
 
         <div class="aside-cat">Technical Rates</div>
         <a class="side-link" onclick="openTool(event, 'cross')">Forex Cross Rates</a>
@@ -117,10 +121,40 @@
             </div>
         </section>
 
+        <section id="calc-pos" class="tab-content">
+            <div class="seo-box">
+                <h2>Position Size Calculator</h2>
+                <p>Protect your capital by calculating the exact lot size for every trade. Proper risk management is the key to longevity; read our guide on position sizing at the <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
+            </div>
+            <div class="widget-card">
+                <iframe src="https://forexverify.com/widgets/position-size-calculator" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </section>
+
+        <section id="calc-pip" class="tab-content">
+            <div class="seo-box">
+                <h2>Forex Pip Calculator</h2>
+                <p>Instantly determine the value of a pip for any currency pair in your base account currency. Master forex mathematics on our <a href="https://tradeunfold.com/blog" class="seo-link">Education Blog</a>.</p>
+            </div>
+            <div class="widget-card">
+                <iframe src="https://forexverify.com/widgets/pip-calculator" width="100%" height="450" frameborder="0"></iframe>
+            </div>
+        </section>
+
+        <section id="calc-margin" class="tab-content">
+            <div class="seo-box">
+                <h2>Forex Margin Calculator</h2>
+                <p>Calculate required margin and leverage impact before entering high-volatility setups. Avoid margin calls by following our risk strategies at <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold</a>.</p>
+            </div>
+            <div class="widget-card">
+                <iframe src="https://forexverify.com/widgets/margin-calculator" width="100%" height="450" frameborder="0"></iframe>
+            </div>
+        </section>
+
         <section id="overview" class="tab-content">
             <div class="seo-box">
                 <h2>Comprehensive World Market Overview</h2>
-                <p>Monitor global financial health across indices, bonds, and futures in one dashboard. Master high-level macro analysis on our <a href="https://tradeunfold.com/blog" class="seo-link">Trading Intelligence Blog</a>.</p>
+                <p>Monitor global financial health across indices, bonds, and futures. Master high-level macro analysis on our <a href="https://tradeunfold.com/blog" class="seo-link">Trading Intelligence Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
@@ -128,634 +162,60 @@
                   <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">World markets</span></a><span class="trademark"> by TradingView</span></div>
                   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
                   {
-                  "colorTheme": "dark",
-                  "dateRange": "12M",
-                  "locale": "en",
-                  "largeChartUrl": "",
-                  "isTransparent": false,
-                  "showFloatingTooltip": false,
-                  "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
-                  "plotLineColorFalling": "rgba(41, 98, 255, 1)",
-                  "gridLineColor": "rgba(240, 243, 250, 0)",
-                  "scaleFontColor": "#DBDBDB",
-                  "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
-                  "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
-                  "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-                  "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-                  "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                  "colorTheme": "dark", "dateRange": "12M", "locale": "en", "width": "100%", "height": "550", "showSymbolLogo": true, "showChart": true,
                   "tabs": [
-                    {
-                      "title": "Indices",
-                      "symbols": [
-                        {
-                          "s": "FOREXCOM:SPXUSD",
-                          "d": "S&P 500 Index"
-                        },
-                        {
-                          "s": "FOREXCOM:NSXUSD",
-                          "d": "US 100 Cash CFD"
-                        },
-                        {
-                          "s": "FOREXCOM:DJI",
-                          "d": "Dow Jones Industrial Average Index"
-                        },
-                        {
-                          "s": "INDEX:NKY",
-                          "d": "Japan 225"
-                        },
-                        {
-                          "s": "INDEX:DEU40",
-                          "d": "DAX Index"
-                        },
-                        {
-                          "s": "FOREXCOM:UKXGBP",
-                          "d": "FTSE 100 Index"
-                        }
-                      ],
-                      "originalTitle": "Indices"
-                    },
-                    {
-                      "title": "Futures",
-                      "symbols": [
-                        {
-                          "s": "BMFBOVESPA:ISP1!",
-                          "d": "S&P 500"
-                        },
-                        {
-                          "s": "BMFBOVESPA:EUR1!",
-                          "d": "Euro"
-                        },
-                        {
-                          "s": "CMCMARKETS:GOLD",
-                          "d": "Gold"
-                        },
-                        {
-                          "s": "BMFBOVESPA:CCM1!",
-                          "d": "Corn"
-                        },
-                        {
-                          "s": "NASDAQ:NDX",
-                          "d": "",
-                          "logoid": "indices/nasdaq-100",
-                          "currency-logoid": "country/US"
-                        }
-                      ],
-                      "originalTitle": "Futures"
-                    },
-                    {
-                      "title": "Bonds",
-                      "symbols": [
-                        {
-                          "s": "EUREX:FGBL1!",
-                          "d": "Euro Bund"
-                        },
-                        {
-                          "s": "EUREX:FBTP1!",
-                          "d": "Euro BTP"
-                        },
-                        {
-                          "s": "EUREX:FGBM1!",
-                          "d": "Euro BOBL"
-                        }
-                      ],
-                      "originalTitle": "Bonds"
-                    },
-                    {
-                      "title": "Forex",
-                      "symbols": [
-                        {
-                          "s": "FX:EURUSD",
-                          "d": "EUR to USD"
-                        },
-                        {
-                          "s": "FX:GBPUSD",
-                          "d": "GBP to USD"
-                        },
-                        {
-                          "s": "FX:USDJPY",
-                          "d": "USD to JPY"
-                        },
-                        {
-                          "s": "FX:USDCHF",
-                          "d": "USD to CHF"
-                        },
-                        {
-                          "s": "FX:AUDUSD",
-                          "d": "AUD to USD"
-                        },
-                        {
-                          "s": "FX:USDCAD",
-                          "d": "USD to CAD"
-                        }
-                      ],
-                      "originalTitle": "Forex"
-                    }
-                  ],
-                  "support_host": "https://www.tradingview.com",
-                  "width": "100%",
-                  "height": "550",
-                  "showSymbolLogo": true,
-                  "showChart": true
-                }
+                    { "title": "Indices", "symbols": [{ "s": "FOREXCOM:SPXUSD" }, { "s": "FOREXCOM:NSXUSD" }, { "s": "FOREXCOM:DJI" }, { "s": "INDEX:NKY" }, { "s": "INDEX:DEU40" }, { "s": "FOREXCOM:UKXGBP" }] },
+                    { "title": "Forex", "symbols": [{ "s": "FX:EURUSD" }, { "s": "FX:GBPUSD" }, { "s": "FX:USDJPY" }, { "s": "FX:USDCHF" }, { "s": "FX:AUDUSD" }, { "s": "FX:USDCAD" }] }
+                  ]
+                  }
                   </script>
                 </div>
-                </div>
+            </div>
         </section>
 
         <section id="data" class="tab-content">
             <div class="seo-box">
                 <h2>Live Financial Market Data Quotes</h2>
-                <p>Access precise OHLC values and percentage changes for critical financial instruments. Learn how to interpret raw market data for better entry timing on our <a href="https://tradeunfold.com/blog" class="seo-link">Technical Blog</a>.</p>
+                <p>Access precise OHLC values for global instruments. Learn to interpret raw data on our <a href="https://tradeunfold.com/blog" class="seo-link">Technical Blog</a>.</p>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
                   <div class="tradingview-widget-container__widget"></div>
                   <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">Market summary</span></a><span class="trademark"> by TradingView</span></div>
                   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-                  {
-                  "colorTheme": "dark",
-                  "locale": "en",
-                  "largeChartUrl": "",
-                  "isTransparent": false,
-                  "showSymbolLogo": true,
-                  "backgroundColor": "#0F0F0F",
-                  "support_host": "https://www.tradingview.com",
-                  "width": "100%",
-                  "height": 550,
-                  "symbolsGroups": [
-                    {
-                      "name": "Indices",
-                      "symbols": [
-                        {
-                          "name": "FOREXCOM:SPXUSD",
-                          "displayName": "S&P 500 Index"
-                        },
-                        {
-                          "name": "FOREXCOM:NSXUSD",
-                          "displayName": "US 100 Cash CFD"
-                        },
-                        {
-                          "name": "FOREXCOM:DJI",
-                          "displayName": "Dow Jones Industrial Average Index"
-                        },
-                        {
-                          "name": "INDEX:NKY",
-                          "displayName": "Japan 225"
-                        },
-                        {
-                          "name": "INDEX:DEU40",
-                          "displayName": "DAX Index"
-                        },
-                        {
-                          "name": "FOREXCOM:UKXGBP",
-                          "displayName": "FTSE 100 Index"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Futures",
-                      "symbols": [
-                        {
-                          "name": "BMFBOVESPA:ISP1!",
-                          "displayName": "S&P 500"
-                        },
-                        {
-                          "name": "BMFBOVESPA:EUR1!",
-                          "displayName": "Euro"
-                        },
-                        {
-                          "name": "CMCMARKETS:GOLD",
-                          "displayName": "Gold"
-                        },
-                        {
-                          "name": "PYTH:WTI3!",
-                          "displayName": "WTI Crude Oil"
-                        },
-                        {
-                          "name": "BMFBOVESPA:CCM1!",
-                          "displayName": "Corn"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Bonds",
-                      "symbols": [
-                        {
-                          "name": "EUREX:FGBL1!",
-                          "displayName": "Euro Bund"
-                        },
-                        {
-                          "name": "EUREX:FBTP1!",
-                          "displayName": "Euro BTP"
-                        },
-                        {
-                          "name": "EUREX:FGBM1!",
-                          "displayName": "Euro BOBL"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Forex",
-                      "symbols": [
-                        {
-                          "name": "FX:EURUSD",
-                          "displayName": "EUR to USD"
-                        },
-                        {
-                          "name": "FX:GBPUSD",
-                          "displayName": "GBP to USD"
-                        },
-                        {
-                          "name": "FX:USDJPY",
-                          "displayName": "USD to JPY"
-                        },
-                        {
-                          "name": "FX:USDCHF",
-                          "displayName": "USD to CHF"
-                        },
-                        {
-                          "name": "FX:AUDUSD",
-                          "displayName": "AUD to USD"
-                        },
-                        {
-                          "name": "FX:USDCAD",
-                          "displayName": "USD to CAD"
-                        },
-                        {
-                          "name": "OANDA:NZDUSD",
-                          "displayName": "NZD to USD"
-                        }
-                      ]
-                    }
-                  ]
-                }
+                  { "colorTheme": "dark", "width": "100%", "height": 550, "symbolsGroups": [{ "name": "Forex", "symbols": [{ "name": "FX:EURUSD" }, { "name": "FX:GBPUSD" }, { "name": "FX:USDJPY" }] }] }
                   </script>
                 </div>
-                </div>
-        </section>
-
-        <section id="stories" class="tab-content">
-            <div class="seo-box">
-                <h2>Breaking Global Market News</h2>
-                <p>Stay updated with high-velocity news briefs across the crypto and stock markets. Learn how to trade the news effectively on our <a href="https://tradeunfold.com/blog" class="seo-link">Financial Blog</a>.</p>
             </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/news/top-providers/tradingview/" rel="noopener nofollow" target="_blank"><span class="blue-text">Top stories</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                  {
-                  "displayMode": "regular",
-                  "feedMode": "all_symbols",
-                  "colorTheme": "dark",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "width": "100%",
-                  "height": 550
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="calendar" class="tab-content">
-            <div class="seo-box">
-                <h2>Pro Economic Calendar & Event Tracker</h2>
-                <p>Anticipate critical financial events and interest rate decisions. Discover how to shield your portfolio from news volatility on our <a href="https://tradeunfold.com/blog" class="seo-link">Pro Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/economic-calendar/" rel="noopener nofollow" target="_blank"><span class="blue-text">Economic Calendar</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-                  {
-                  "colorTheme": "dark",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "countryFilter": "ar,au,br,ca,cn,fr,de,in,id,it,jp,kr,mx,ru,sa,za,tr,gb,us,eu",
-                  "importanceFilter": "-1,0,1",
-                  "width": "100%",
-                  "height": 550
-                }
-                  </script>
-                </div>
-                </div>
         </section>
 
         <section id="s-heat" class="tab-content">
             <div class="seo-box">
                 <h2>Global Stock Market Heatmap</h2>
-                <p>Visualize sector performance and market capitalization at a glance. Learn sector rotation strategies on our <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
+                <p>Visualize sector performance instantly. Learn sector rotation at the <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
             </div>
             <div class="widget-card" style="height: 600px;">
                 <div class="tradingview-widget-container">
                   <div class="tradingview-widget-container__widget"></div>
                   <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/heatmap/stock/" rel="noopener nofollow" target="_blank"><span class="blue-text">Stock Heatmap</span></a><span class="trademark"> by TradingView</span></div>
                   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-                  {
-                  "dataSource": "SPX500",
-                  "blockSize": "market_cap_basic",
-                  "blockColor": "change",
-                  "grouping": "sector",
-                  "locale": "en",
-                  "symbolUrl": "",
-                  "colorTheme": "dark",
-                  "exchanges": [],
-                  "hasTopBar": false,
-                  "isDataSetEnabled": false,
-                  "isZoomEnabled": true,
-                  "hasSymbolTooltip": true,
-                  "isMonoSize": false,
-                  "width": "100%",
-                  "height": "100%"
-                }
+                  { "dataSource": "SPX500", "blockColor": "change", "grouping": "sector", "colorTheme": "dark", "width": "100%", "height": "100%" }
                   </script>
                 </div>
-                </div>
-        </section>
-
-        <section id="c-heat" class="tab-content">
-            <div class="seo-box">
-                <h2>Cryptocurrency Market Heatmap</h2>
-                <p>Track Bitcoin and altcoin dominance across the digital asset space. Master crypto risk management at our <a href="https://tradeunfold.com/blog" class="seo-link">Crypto Intelligence Blog</a>.</p>
             </div>
-            <div class="widget-card" style="height: 600px;">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/heatmap/crypto/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto Heatmap</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-                  {
-                  "dataSource": "Crypto",
-                  "blockSize": "market_cap_calc",
-                  "blockColor": "24h_close_change|5",
-                  "locale": "en",
-                  "symbolUrl": "",
-                  "colorTheme": "dark",
-                  "hasTopBar": false,
-                  "isDataSetEnabled": false,
-                  "isZoomEnabled": true,
-                  "hasSymbolTooltip": true,
-                  "isMonoSize": false,
-                  "width": "100%",
-                  "height": "100%"
-                }
-                  </script>
-                </div>
-                </div>
         </section>
 
-        <section id="e-heat" class="tab-content">
-            <div class="seo-box">
-                <h2>Global ETF Asset Heatmap</h2>
-                <p>Analyze institutional fund performance by volume and yield. Discover how to build a diversified portfolio on our <a href="https://tradeunfold.com/blog" class="seo-link">Educational Blog</a>.</p>
-            </div>
-            <div class="widget-card" style="height: 600px;">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/heatmap/etf/" rel="noopener nofollow" target="_blank"><span class="blue-text">ETF Heatmap</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-etf-heatmap.js" async>
-                  {
-                  "dataSource": "AllUSEtf",
-                  "blockSize": "volume",
-                  "blockColor": "change",
-                  "grouping": "asset_class",
-                  "locale": "en",
-                  "symbolUrl": "",
-                  "colorTheme": "dark",
-                  "hasTopBar": false,
-                  "isDataSetEnabled": false,
-                  "isZoomEnabled": true,
-                  "hasSymbolTooltip": true,
-                  "isMonoSize": false,
-                  "width": "100%",
-                  "height": "100%"
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="f-heat" class="tab-content">
-            <div class="seo-box">
-                <h2>Real-Time Forex Strength Heatmap</h2>
-                <p>Instantly spot currency pair volatility and relative strength. Learn advanced forex correlation on our <a href="https://tradeunfold.com/blog" class="seo-link">Forex Strategy Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/cross-rates-overview-heat-map/" rel="noopener nofollow" target="_blank"><span class="blue-text">Forex Heatmap</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
-                  {
-                  "colorTheme": "dark",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "currencies": [
-                    "EUR",
-                    "USD",
-                    "JPY",
-                    "GBP",
-                    "CHF",
-                    "AUD",
-                    "CAD",
-                    "NZD",
-                    "CNY"
-                  ],
-                  "backgroundColor": "#0F0F0F",
-                  "width": "100%",
-                  "height": 400
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="s-screen" class="tab-content">
-            <div class="seo-box">
-                <h2>Institutional Grade Stock Screener</h2>
-                <p>Scan thousands of US equities based on custom fundamental filters. Refine your stock selection process on our <a href="https://tradeunfold.com/blog" class="seo-link">Market Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/screener/" rel="noopener nofollow" target="_blank"><span class="blue-text">Stock Screener</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                  {
-                  "market": "america",
-                  "showToolbar": true,
-                  "defaultColumn": "overview",
-                  "defaultScreen": "most_capitalized",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "colorTheme": "dark",
-                  "width": "100%",
-                  "height": 550
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="f-screen" class="tab-content">
-            <div class="seo-box">
-                <h2>Advanced Forex Pair Screener</h2>
-                <p>Filter global currency crosses for high-probability trade setups. Unfold professional technical analysis secrets on our <a href="https://tradeunfold.com/blog" class="seo-link">Trading Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/" rel="noopener nofollow" target="_blank"><span class="blue-text">Forex Screener</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                  {
-                  "market": "forex",
-                  "showToolbar": true,
-                  "defaultColumn": "overview",
-                  "defaultScreen": "general",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "colorTheme": "dark",
-                  "width": "100%",
-                  "height": 550
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="c-screen" class="tab-content">
-            <div class="seo-box">
-                <h2>Digital Asset & Crypto Screener</h2>
-                <p>Identify the next breakout coin using professional crypto scanning filters. Learn how to trade crypto volatility on our <a href="https://tradeunfold.com/blog" class="seo-link">Blockchain Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/crypto-coins-screener/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto Screener</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                  {
-                  "market": "crypto",
-                  "showToolbar": true,
-                  "defaultColumn": "overview",
-                  "defaultScreen": "general",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "colorTheme": "dark",
-                  "width": "100%",
-                  "height": 550
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="c-mkt" class="tab-content">
-            <div class="seo-box">
-                <h2>Crypto Market Capitalization Matrix</h2>
-                <p>Sort global digital assets by market cap and circulating supply. Understand market psychology cycles on our <a href="https://tradeunfold.com/blog" class="seo-link">Psychology Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto markets</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                  {
-                  "defaultColumn": "overview",
-                  "screener_type": "crypto_mkt",
-                  "displayCurrency": "USD",
-                  "colorTheme": "dark",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "width": "100%",
-                  "height": 550
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="cross" class="tab-content">
-            <div class="seo-box">
-                <h2>Real-Time Forex Cross Rates</h2>
-                <p>Monitor currency strength against the world's major counterparties. Learn about forex arbitrage on our <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/" rel="noopener nofollow" target="_blank"><span class="blue-text">Forex market</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-                  {
-                  "colorTheme": "dark",
-                  "isTransparent": false,
-                  "locale": "en",
-                  "currencies": [
-                    "EUR",
-                    "USD",
-                    "JPY",
-                    "GBP",
-                    "CHF",
-                    "AUD",
-                    "CAD",
-                    "NZD"
-                  ],
-                  "backgroundColor": "#0F0F0F",
-                  "width": "100%",
-                  "height": 400
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-        <section id="hotlist" class="tab-content">
-            <div class="seo-box">
-                <h2>Stock Market Daily Hotlist</h2>
-                <p>Discover the most active stocks, top gainers, and top losers instantly. Master stock market volatility on our <a href="https://tradeunfold.com/blog" class="seo-link">Pro Analysis Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/stocks-usa/" rel="noopener nofollow" target="_blank"><span class="blue-text">Stocks today</span></a><span class="trademark"> by TradingView</span></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js" async>
-                  {
-                  "exchange": "US",
-                  "colorTheme": "dark",
-                  "dateRange": "12M",
-                  "showChart": true,
-                  "locale": "en",
-                  "largeChartUrl": "",
-                  "isTransparent": false,
-                  "showSymbolLogo": false,
-                  "showFloatingTooltip": false,
-                  "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
-                  "plotLineColorFalling": "rgba(41, 98, 255, 1)",
-                  "gridLineColor": "rgba(240, 243, 250, 0)",
-                  "scaleFontColor": "#DBDBDB",
-                  "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
-                  "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
-                  "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-                  "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-                  "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
-                  "width": "100%",
-                  "height": "550"
-                }
-                  </script>
-                </div>
-                </div>
-        </section>
-
-    </main>
+        </main>
 </div>
 
 <footer style="background-color:#000;color:white;padding:60px 20px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;text-align:center">
-
   <div style="max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:40px">
-
     <div style="flex:1 1 250px;text-align:center;margin-bottom:20px">
       <div style="display:inline-block;background:white;padding:15px;border-radius:12px">
         <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="height:100px;display:block;margin:auto">
       </div>
       <p style="font-size:18px;font-weight:700;color:#aaa;margin-top:12px">Unfolding The World Of Trading</p>
     </div>
-
     <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
       <h4 style="font-size:18px;margin-bottom:15px">Pages</h4>
       <ul style="padding:0;margin:0;text-align:center;list-style:none">
@@ -765,7 +225,6 @@
         <li><a href="https://tradeunfold.com/contact" style="color:#55c9c8;text-decoration:none;line-height:2">Contact</a></li>
       </ul>
     </div>
-
     <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
       <h4 style="font-size:18px;margin-bottom:15px">Legal</h4>
       <ul style="padding:0;margin:0;text-align:center;list-style:none">
@@ -777,9 +236,7 @@
         Email: <a href="mailto:info@tradeunfold.com" style="color:#55c9c8;text-decoration:none">info@tradeunfold.com</a>
       </p>
     </div>
-
   </div>
-
   <div style="max-width:900px;margin:30px auto 0;text-align:center">
     <p style="font-size:13px;color:#888;margin-bottom:15px;line-height:1.6">
       <strong>Affiliate Transparency:</strong> Some links on this site are affiliate links. 
@@ -795,18 +252,17 @@
       and should not be taken as financial advice. Always do your own research before making trading decisions.
     </p>
   </div>
-
   <div style="text-align:center;border-top:1px solid #222;margin-top:40px;padding-top:20px;font-size:14px;color:#666">
     © 2025 <strong>TradeUnfold.com</strong>. All Rights Reserved.
   </div>
-
 </footer>
 
 <script>
     function openTool(evt, name) {
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
-        document.getElementById(name).classList.add('active');
+        const target = document.getElementById(name);
+        if(target) target.classList.add('active');
         evt.currentTarget.classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
