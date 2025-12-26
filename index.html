@@ -40,13 +40,16 @@
         .tab-content { display: none; animation: fadeIn 0.4s ease; }
         .tab-content.active { display: block; }
         
+        /* SEO & Resource Blocks */
         .seo-box { margin-bottom: 25px; line-height: 1.6; }
         .seo-box h2 { font-size: 26px; margin-bottom: 12px; color: #111; font-weight: 800; }
-        .seo-box p { margin-bottom: 15px; color: var(--text-muted); font-size: 15px; }
-        .seo-link { color: var(--primary-dark); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--primary); }
-        .seo-link:hover { background: #f0fdfa; }
+        .seo-box p { margin-bottom: 10px; color: var(--text-muted); font-size: 15px; }
+        
+        .resource-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .resource-link { background: #fff; border: 1px solid var(--border); padding: 8px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; color: var(--primary-dark); text-decoration: none; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .resource-link:hover { border-color: var(--primary); background: #f0fdfa; transform: translateY(-1px); }
 
-        .widget-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border); margin-bottom: 40px; min-height: 400px;}
+        .widget-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border); margin-bottom: 40px; min-height: 450px;}
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -83,6 +86,7 @@
         <div class="aside-cat">Intelligence Hub</div>
         <a class="side-link active" onclick="openTool(event, 'summary')">Market Summary</a>
         <a class="side-link" onclick="openTool(event, 'overview')">Market Overview</a>
+        <a class="side-link" onclick="openTool(event, 'calendar')">Economic Calendar</a>
         
         <div class="aside-cat">Forex Calculators</div>
         <a class="side-link" onclick="openTool(event, 'calc-pos')">Position Size</a>
@@ -93,23 +97,26 @@
         <a class="side-link" onclick="openTool(event, 'calc-fibo')">Fibonacci Calculator</a>
         <a class="side-link" onclick="openTool(event, 'calc-conv')">Currency Converter</a>
 
-        <div class="aside-cat">Visual Heatmaps</div>
+        <div class="aside-cat">Analysis Tools</div>
+        <a class="side-link" onclick="openTool(event, 'f-heat')">Forex Heatmap</a>
+        <a class="side-link" onclick="openTool(event, 'f-screen')">Forex Screener</a>
         <a class="side-link" onclick="openTool(event, 's-heat')">Stock Heatmap</a>
         <a class="side-link" onclick="openTool(event, 'c-heat')">Crypto Heatmap</a>
-        <a class="side-link" onclick="openTool(event, 'f-heat')">Forex Heatmap</a>
-
-        <div class="aside-cat">Asset Screening</div>
-        <a class="side-link" onclick="openTool(event, 's-screen')">Stock Screener</a>
-        <a class="side-link" onclick="openTool(event, 'f-screen')">Forex Screener</a>
-        <a class="side-link" onclick="openTool(event, 'calendar')">Economic Calendar</a>
     </aside>
 
     <main id="main-scroll">
         
         <section id="summary" class="tab-content active">
             <div class="seo-box">
-                <h2>Real-Time Market Performance</h2>
-                <p>Track global momentum across all major asset classes. For deep-dive analysis, visit the <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
+                <h2>Market Performance Hub</h2>
+                <p>Track real-time global momentum. For deeper insights, refer to our essential trading guides:</p>
+                <div class="resource-grid">
+                    <a href="https://tradeunfold.com/forex-trading-guide" target="_blank" class="resource-link">Forex Guide</a>
+                    <a href="https://tradeunfold.com/forex-broker-scams" target="_blank" class="resource-link">Broker Scams</a>
+                    <a href="https://tradeunfold.com/truth-about-forex-brokers" target="_blank" class="resource-link">Broker Truths</a>
+                    <a href="https://tradeunfold.com/forex-signals-truth" target="_blank" class="resource-link">Signals Truth</a>
+                    <a href="https://tradeunfold.com/blog" target="_blank" class="resource-link">TradeUnfold Blog</a>
+                </div>
             </div>
             <div class="widget-card">
                 <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-summary.js"></script>
@@ -119,8 +126,15 @@
 
         <section id="calc-pos" class="tab-content">
             <div class="seo-box">
-                <h2>Position Size Calculator</h2>
-                <p>Correct lot sizing is the first step in risk management. Refer to my <a href="https://tradeunfold.com/forex-trading-guide" class="seo-link">Forex Trading Guide</a> and the <a href="https://tradeunfold.com/blog" class="seo-link">Blog</a> to learn more about protecting your capital.</p>
+                <h2>Position Size Calculator Widget</h2>
+                <p>Professional lot sizing is key to survival. Refer to our essential FX articles:</p>
+                <div class="resource-grid">
+                    <a href="https://tradeunfold.com/forex-trading-guide" target="_blank" class="resource-link">Forex Guide</a>
+                    <a href="https://tradeunfold.com/forex-broker-scams" target="_blank" class="resource-link">Broker Scams</a>
+                    <a href="https://tradeunfold.com/truth-about-forex-brokers" target="_blank" class="resource-link">Broker Truths</a>
+                    <a href="https://tradeunfold.com/forex-signals-truth" target="_blank" class="resource-link">Signals Truth</a>
+                    <a href="https://tradeunfold.com/blog" target="_blank" class="resource-link">TradeUnfold Blog</a>
+                </div>
             </div>
             <div class="widget-card">
                 <div id="position-size-calculator-382049"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"665","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"position-size-calculator","ContainerId":"position-size-calculator-382049"});</script></div>
@@ -129,129 +143,109 @@
 
         <section id="calc-pip" class="tab-content">
             <div class="seo-box">
-                <h2>Pip Value Calculator</h2>
-                <p>Know exactly how much each movement is worth. Before choosing a broker to trade with, read the <a href="https://tradeunfold.com/truth-about-forex-brokers" class="seo-link">Truth About Forex Brokers</a> and check my <a href="https://tradeunfold.com/blog" class="seo-link">latest articles</a>.</p>
+                <h2>Pip Calculator Widget</h2>
+                <p>Calculate your point value accurately. Refer to our essential FX articles:</p>
+                <div class="resource-grid">
+                    <a href="https://tradeunfold.com/forex-trading-guide" target="_blank" class="resource-link">Forex Guide</a>
+                    <a href="https://tradeunfold.com/forex-broker-scams" target="_blank" class="resource-link">Broker Scams</a>
+                    <a href="https://tradeunfold.com/truth-about-forex-brokers" target="_blank" class="resource-link">Broker Truths</a>
+                    <a href="https://tradeunfold.com/forex-signals-truth" target="_blank" class="resource-link">Signals Truth</a>
+                    <a href="https://tradeunfold.com/blog" target="_blank" class="resource-link">TradeUnfold Blog</a>
+                </div>
             </div>
             <div class="widget-card">
                 <div id="pip-value-calculator-967866"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"665","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"pip-value-calculator","ContainerId":"pip-value-calculator-967866"});</script></div>
             </div>
         </section>
 
-        <section id="calc-margin" class="tab-content">
-            <div class="seo-box">
-                <h2>Margin Calculator</h2>
-                <p>Calculate your required margin to avoid unnecessary liquidations. Learn more about staying safe in my article on <a href="https://tradeunfold.com/forex-broker-scams" class="seo-link">Forex Broker Scams</a> and visit the <a href="https://tradeunfold.com/blog" class="seo-link">Blog</a> for more.</p>
-            </div>
-            <div class="widget-card">
-                <div id="margin-calculator-908973"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"665","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"margin-calculator","ContainerId":"margin-calculator-908973"});</script></div>
-            </div>
-        </section>
-
-        <section id="calc-profit" class="tab-content">
-            <div class="seo-box">
-                <h2>Profit Calculator</h2>
-                <p>Project your potential gains before entering a trade. Refer to my <a href="https://tradeunfold.com/forex-trading-guide" class="seo-link">Forex Trading Guide</a> and the <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a> for expert strategies.</p>
-            </div>
-            <div class="widget-card">
-                <div id="profit-calculator-301806"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"665","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":true,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"profit-calculator-301806"});</script></div>
-            </div>
-        </section>
-
-        <section id="calc-draw" class="tab-content">
-            <div class="seo-box">
-                <h2>Drawdown Calculator</h2>
-                <p>Analyze how much loss your account can withstand. If you use signals, make sure to read the <a href="https://tradeunfold.com/forex-signals-truth" class="seo-link">Truth About Forex Signals</a> first and follow our <a href="https://tradeunfold.com/blog" class="seo-link">Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div id="drawdown-calculator-372785"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"665","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"drawdown-calculator","ContainerId":"drawdown-calculator-372785"});</script></div>
-            </div>
-        </section>
-
-        <section id="calc-fibo" class="tab-content">
-            <div class="seo-box">
-                <h2>Fibonacci Calculator</h2>
-                <p>Calculate retracement and extension levels instantly. Learn more in my <a href="https://tradeunfold.com/forex-trading-guide" class="seo-link">Forex Trading Guide</a> and browse the <a href="https://tradeunfold.com/blog" class="seo-link">Blog</a> for technical tips.</p>
-            </div>
-            <div class="widget-card">
-                <div id="fibonacci-calculator-167933"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"665","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","Calculator":"fibonacci-calculator","ContainerId":"fibonacci-calculator-167933"});</script></div>
-            </div>
-        </section>
-
-        <section id="calc-conv" class="tab-content">
-            <div class="seo-box">
-                <h2>Currency Converter</h2>
-                <p>Check live exchange rates for all global pairs. To avoid bad trading environments, read about <a href="https://tradeunfold.com/forex-broker-scams" class="seo-link">Forex Broker Scams</a> and visit the <a href="https://tradeunfold.com/blog" class="seo-link">Blog</a>.</p>
-            </div>
-            <div class="widget-card">
-                <div id="currency-converter-47570"><script type="text/javascript" src="https://fxverify.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://fxverify.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxYmExYzQgMjAlLCAjNDliOWFkIDQ1JSk7IGJvcmRlcjogc29saWQgMHB4OyBib3JkZXItYm90dG9tOiBub25lOyBjb2xvcjogd2hpdGU7","BottomPaneStyle":"YmFja2dyb3VuZDogd2hpdGU7IGJvcmRlcjogc29saWQgMXB4ICM3YTdhN2E7IGJvcmRlci10b3A6IG5vbmU7IGNvbG9yOiBibGFjazs=","ButtonStyle":"YmFja2dyb3VuZDogIzFiYTFjNDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"665","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowEmbedButton":true,"CompactType":"large","DefaultCurrencyFrom":"EUR","DefaultCurrencyTo":"USD","Calculator":"currency-converter","ContainerId":"currency-converter-47570"});</script></div>
-            </div>
-        </section>
-
         <section id="overview" class="tab-content">
             <div class="seo-box">
                 <h2>Market Data Overview</h2>
-                <p>Comprehensive quotes for indices, stocks, and forex. For the full experience, check out the <a href="https://tradeunfold.com/blog" class="seo-link">TradeUnfold Blog</a>.</p>
+                <p>Complete asset overview. Refer to our essential FX articles to trade better:</p>
+                <div class="resource-grid">
+                    <a href="https://tradeunfold.com/forex-trading-guide" target="_blank" class="resource-link">Forex Guide</a>
+                    <a href="https://tradeunfold.com/forex-broker-scams" target="_blank" class="resource-link">Broker Scams</a>
+                    <a href="https://tradeunfold.com/truth-about-forex-brokers" target="_blank" class="resource-link">Broker Truths</a>
+                    <a href="https://tradeunfold.com/forex-signals-truth" target="_blank" class="resource-link">Signals Truth</a>
+                    <a href="https://tradeunfold.com/blog" target="_blank" class="resource-link">TradeUnfold Blog</a>
+                </div>
             </div>
             <div class="widget-card">
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
-                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">World markets</span></a> by TradingView</div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                    { "colorTheme": "dark", "width": "100%", "height": 550, "showChart": true, "tabs": [ { "title": "Indices", "symbols": [ { "s": "FOREXCOM:SPXUSD" }, { "s": "FOREXCOM:NSXUSD" } ] }, { "title": "Forex", "symbols": [ { "s": "FX:EURUSD" }, { "s": "FX:GBPUSD" } ] } ] }
+                    { "colorTheme": "dark", "width": "100%", "height": 550, "showChart": true, "tabs": [ { "title": "Forex", "symbols": [ { "s": "FX:EURUSD" }, { "s": "FX:GBPUSD" } ] } ] }
                     </script>
                 </div>
             </div>
         </section>
 
-    </main>
+        <section id="calendar" class="tab-content">
+            <div class="seo-box">
+                <h2>Economic Calendar</h2>
+                <p>Track high-impact news. Refer to our essential FX articles before trading news:</p>
+                <div class="resource-grid">
+                    <a href="https://tradeunfold.com/forex-trading-guide" target="_blank" class="resource-link">Forex Guide</a>
+                    <a href="https://tradeunfold.com/forex-broker-scams" target="_blank" class="resource-link">Broker Scams</a>
+                    <a href="https://tradeunfold.com/truth-about-forex-brokers" target="_blank" class="resource-link">Broker Truths</a>
+                    <a href="https://tradeunfold.com/forex-signals-truth" target="_blank" class="resource-link">Signals Truth</a>
+                    <a href="https://tradeunfold.com/blog" target="_blank" class="resource-link">TradeUnfold Blog</a>
+                </div>
+            </div>
+            <div class="widget-card">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                    { "colorTheme": "dark", "isTransparent": false, "width": "100%", "height": "500", "locale": "en", "importanceFilter": "-1,0,1" }
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <section id="f-heat" class="tab-content">
+            <div class="seo-box">
+                <h2>Forex Heatmap</h2>
+                <p>Visualize currency strength. Refer to our essential FX articles to master technicals:</p>
+                <div class="resource-grid">
+                    <a href="https://tradeunfold.com/forex-trading-guide" target="_blank" class="resource-link">Forex Guide</a>
+                    <a href="https://tradeunfold.com/forex-broker-scams" target="_blank" class="resource-link">Broker Scams</a>
+                    <a href="https://tradeunfold.com/truth-about-forex-brokers" target="_blank" class="resource-link">Broker Truths</a>
+                    <a href="https://tradeunfold.com/forex-signals-truth" target="_blank" class="resource-link">Signals Truth</a>
+                    <a href="https://tradeunfold.com/blog" target="_blank" class="resource-link">TradeUnfold Blog</a>
+                </div>
+            </div>
+            <div class="widget-card">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
+                    { "width": "100%", "height": 500, "currencies": ["EUR", "USD", "JPY", "GBP", "CHF", "AUD", "CAD", "NZD"], "isTransparent": false, "colorTheme": "dark", "locale": "en" }
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        </main>
 </div>
 
-<footer style="background-color:#000;color:white;padding:60px 20px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;text-align:center">
-  <div style="max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:40px">
-    <div style="flex:1 1 250px;text-align:center;margin-bottom:20px">
-      <div style="display:inline-block;background:white;padding:15px;border-radius:12px">
-        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="TradeUnfold Logo" style="height:100px;display:block;margin:auto">
+<footer style="background-color:#000;color:white;padding:60px 20px;text-align:center">
+  <div style="max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+    <div style="flex:1 1 250px;">
+      <div style="display:inline-block;background:white;padding:10px;border-radius:8px">
+        <img src="https://tradeunfold.wordpress.com/wp-content/uploads/2025/10/logo-alternative.jpeg" alt="Logo" style="height:80px;">
       </div>
-      <p style="font-size:18px;font-weight:700;color:#aaa;margin-top:12px">Unfolding The World Of Trading</p>
+      <p style="color:#aaa;margin-top:15px">Unfolding The World Of Trading</p>
     </div>
-    <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
-      <h4 style="font-size:18px;margin-bottom:15px">Pages</h4>
-      <ul style="padding:0;margin:0;text-align:center;list-style:none">
-        <li><a href="https://tradeunfold.com" style="color:#55c9c8;text-decoration:none;line-height:2">Home</a></li>
-        <li><a href="https://tradeunfold.com/blog" style="color:#55c9c8;text-decoration:none;line-height:2">Blog</a></li>
-        <li><a href="https://tradeunfold.com/about" style="color:#55c9c8;text-decoration:none;line-height:2">About</a></li>
-        <li><a href="https://tradeunfold.com/contact" style="color:#55c9c8;text-decoration:none;line-height:2">Contact</a></li>
+    <div style="flex:1 1 200px;">
+      <h4 style="margin-bottom:15px">Pro Links</h4>
+      <ul style="list-style:none;padding:0">
+        <li><a href="https://tradeunfold.com/blog" style="color:var(--primary);text-decoration:none">Our Blog</a></li>
+        <li><a href="https://tradeunfold.com/forex-trading-guide" style="color:var(--primary);text-decoration:none">Trading Guide</a></li>
       </ul>
     </div>
-    <div style="flex:1 1 200px;text-align:center;margin-bottom:20px">
-      <h4 style="font-size:18px;margin-bottom:15px">Legal</h4>
-      <ul style="padding:0;margin:0;text-align:center;list-style:none">
-        <li><a href="https://tradeunfold.com/privacy-policy" style="color:#55c9c8;text-decoration:none;line-height:2">Privacy Policy</a></li>
-        <li><a href="https://tradeunfold.com/disclaimer" style="color:#55c9c8;text-decoration:none;line-height:2">Disclaimer</a></li>
-        <li><a href="https://tradeunfold.com/terms-of-use" style="color:#55c9c8;text-decoration:none;line-height:2">Terms of Use</a></li>
-      </ul>
-      <p style="font-size:14px;color:#aaa;margin-top:20px;line-height:1.5">
-        Email: <a href="mailto:info@tradeunfold.com" style="color:#55c9c8;text-decoration:none">info@tradeunfold.com</a>
-      </p>
-    </div>
   </div>
-  <div style="max-width:900px;margin:30px auto 0;text-align:center">
-    <p style="font-size:13px;color:#888;margin-bottom:15px;line-height:1.6">
-      <strong>Affiliate Transparency:</strong> Some links on this site are affiliate links. 
-      That means we may earn a small commission if you choose to buy through them- at no extra cost to you. 
-      But trust comes before profit: it’s always more important that you make your own decisions 
-      based on what’s best for your trading journey, while taking into account all the considerations and 
-      warnings we explain on our website. If you still decide to trade in online forex, CFDs, or with a prop firm, 
-      we want you to do so with a clear understanding of the risks and as a fully informed choice.
-    </p>
-    <p style="font-size:12px;color:#777;line-height:1.6">
-      <strong>Risk Warning:</strong> Trading financial instruments such as forex, CFDs, and prop firm challenges involves a high level of risk. 
-      You should never trade with money you cannot afford to lose. The content on this website is strictly for educational purposes 
-      and should not be taken as financial advice. Always do your own research before making trading decisions.
-    </p>
-  </div>
-  <div style="text-align:center;border-top:1px solid #222;margin-top:40px;padding-top:20px;font-size:14px;color:#666">
-    © 2025 <strong>TradeUnfold.com</strong>. All Rights Reserved.
+  <div style="max-width:900px;margin:40px auto 0; font-size:12px; color:#777;">
+    <p><strong>Transparency:</strong> We may earn commissions from affiliate links. <strong>Risk Warning:</strong> Trading involves significant risk of loss.</p>
+    <p style="margin-top:10px">© 2025 TradeUnfold.com. All Rights Reserved.</p>
   </div>
 </footer>
 
